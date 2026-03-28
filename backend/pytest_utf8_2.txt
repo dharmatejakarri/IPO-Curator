@@ -1,0 +1,24 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\ASUS\Downloads\IPO Analysis Project\backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\ASUS\Downloads\IPO Analysis Project\backend
+plugins: anyio-4.13.0, langsmith-0.7.22
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+________________________ ERROR collecting test_api.py _________________________
+ImportError while importing test module 'C:\Users\ASUS\Downloads\IPO Analysis Project\backend\test_api.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test_api.py:5: in <module>
+    from main import app
+main.py:12: in <module>
+    from langchain_huggingface import HuggingFaceEmbeddings
+E   ModuleNotFoundError: No module named 'langchain_huggingface'
+=========================== short test summary info ===========================
+ERROR test_api.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 20.65s ==============================

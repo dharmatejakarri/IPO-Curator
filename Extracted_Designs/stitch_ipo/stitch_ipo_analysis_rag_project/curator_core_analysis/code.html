@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Midnight Ledger | The Curator Core</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#3a3939",
+              "secondary-container": "#3a95e8",
+              "outline-variant": "#3b4a44",
+              "error": "#ffb4ab",
+              "on-secondary": "#003258",
+              "tertiary-container": "#bbbcbc",
+              "surface-container-highest": "#353534",
+              "on-secondary-container": "#002b4d",
+              "on-secondary-fixed-variant": "#00497d",
+              "on-primary": "#00382b",
+              "on-background": "#e5e2e1",
+              "inverse-on-surface": "#313030",
+              "primary-fixed-dim": "#28dfb5",
+              "surface-variant": "#353534",
+              "on-primary-fixed-variant": "#00513f",
+              "on-primary-container": "#005643",
+              "background": "#131313",
+              "primary-container": "#00d4aa",
+              "inverse-surface": "#e5e2e1",
+              "on-error": "#690005",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "surface-container-lowest": "#0e0e0e",
+              "on-primary-fixed": "#002118",
+              "on-tertiary": "#2f3131",
+              "tertiary": "#d7d8d8",
+              "secondary": "#9fcaff",
+              "on-secondary-fixed": "#001d36",
+              "outline": "#85948d",
+              "on-tertiary-fixed": "#1a1c1c",
+              "inverse-primary": "#006b55",
+              "secondary-fixed": "#d1e4ff",
+              "surface-container": "#201f1f",
+              "on-error-container": "#ffdad6",
+              "primary-fixed": "#55fcd0",
+              "on-surface": "#e5e2e1",
+              "on-tertiary-container": "#4a4c4c",
+              "tertiary-fixed": "#e2e2e2",
+              "surface": "#131313",
+              "error-container": "#93000a",
+              "surface-container-high": "#2a2a2a",
+              "primary": "#46f1c5",
+              "surface-dim": "#131313",
+              "secondary-fixed-dim": "#9fcaff",
+              "surface-container-low": "#1c1b1b",
+              "on-tertiary-fixed-variant": "#454747",
+              "on-surface-variant": "#bacac2",
+              "surface-tint": "#28dfb5"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-bg-surface-container { background-color: #201f1f; }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(70, 241, 197, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased overflow-x-hidden">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 h-screen w-72 border-r border-[#353534]/15 bg-[#131313] font-['Inter'] antialiased tracking-tight">
+<div class="p-8">
+<h1 class="text-2xl font-black tracking-tighter text-[#46f1c5]">The Curator</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-white/30 mt-1">Premium Tier</p>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<!-- Active Tab: Analysis Terminal -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#46f1c5] bg-[#201f1f] rounded-xl font-bold transition-all scale-98 active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span>Analysis Terminal</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white/50 hover:text-white hover:bg-[#201f1f] hover:text-[#46f1c5] transition-all duration-300 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>IPO Pipeline</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white/50 hover:text-white hover:bg-[#201f1f] hover:text-[#46f1c5] transition-all duration-300 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span>Document Vault</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white/50 hover:text-white hover:bg-[#201f1f] hover:text-[#46f1c5] transition-all duration-300 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Research History</span>
+</a>
+</nav>
+<div class="px-6 py-8">
+<button class="w-full py-4 rounded-xl bg-primary text-on-primary font-bold text-sm tracking-wide emerald-glow hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+                New Analysis
+            </button>
+</div>
+<div class="mt-auto p-4 space-y-1 mb-4 border-t border-white/5 pt-6">
+<a class="flex items-center gap-3 px-4 py-2 text-white/40 hover:text-white text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-white/40 hover:text-white text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 left-72 flex justify-between items-center px-12 z-50 w-full h-20 bg-[#131313]/60 backdrop-blur-xl border-b border-[#353534]/10">
+<div class="flex items-center gap-12">
+<span class="text-xl font-black text-white">Midnight Ledger</span>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-sm font-medium uppercase tracking-widest text-[#46f1c5] border-b-2 border-[#46f1c5] pb-1 cursor-pointer transition-transform active:scale-95" href="#">Market Data</a>
+<a class="text-sm font-medium uppercase tracking-widest text-white/40 hover:text-white cursor-pointer transition-transform active:scale-95" href="#">S-1 Filings</a>
+<a class="text-sm font-medium uppercase tracking-widest text-white/40 hover:text-white cursor-pointer transition-transform active:scale-95" href="#">Risk Assessment</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-white/40">
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white transition-colors" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<button class="bg-primary/10 text-primary border border-primary/20 px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all">
+                Execute Agent
+            </button>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="high-end studio portrait of a sophisticated male financial analyst in dark turtleneck with dramatic rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWAViUpElvunBmkGRuopY-4NCm--JrpioRhAR3qZOyzQUHtFCBvdQ5zwKXv8Xbe7btZPgkrQIvM2Q510Rd87ZIZBeUSprbIjytpy9pwXZZ6f9T3EbMdda76z_JtqV7MlsUKst_2fEq8NWvOcdlVNlQWpHColZk4cbOPYXMPToRusKeavanYgmg0jidAal7zJZ4oMX6yfhmQiEmsHdhuJxphhDOJ2nD2upNkvPFl1ISRHJtUtSyvZjMO72_H6gX6EQBZNl09kKDJVhO"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 pt-32 pb-24 px-12 min-h-screen">
+<!-- Redirection Section: Massive Upload/Search -->
+<section class="max-w-6xl mx-auto mb-24 text-center">
+<h2 class="text-[5rem] font-black tracking-tighter leading-[0.9] text-white mb-8">
+                The Core <span class="text-primary italic">Intelligence</span>
+</h2>
+<div class="relative max-w-3xl mx-auto">
+<div class="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-white/20 text-3xl" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-lowest border-none py-10 pl-20 pr-10 rounded-2xl text-xl font-bold tracking-widest placeholder:text-white/10 focus:ring-2 focus:ring-primary/30 transition-all uppercase" placeholder="DROP S-1 PDF OR ENTER TICKER SYMBOL..." type="text"/>
+<div class="absolute right-4 top-4 bottom-4">
+<button class="h-full px-8 bg-primary text-on-primary rounded-xl font-black text-sm tracking-widest flex items-center gap-2 emerald-glow">
+                        ANALYZE <span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</button>
+</div>
+</div>
+<p class="mt-8 text-white/30 text-xs font-medium uppercase tracking-[0.3em]">Processing power provided by Ledger-V4 Quantum Nodes</p>
+</section>
+<!-- Bento Grid Dashboard -->
+<div class="bento-grid">
+<!-- Large Hero Analysis Card -->
+<div class="col-span-8 bg-surface-container rounded-lg p-11 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-8">
+<span class="text-[0.7rem] font-bold text-primary tracking-[0.2em] bg-primary/10 px-3 py-1 rounded-full uppercase">Live Projection</span>
+</div>
+<div class="flex flex-col h-full justify-between gap-12">
+<div>
+<p class="text-[0.75rem] font-bold text-white/40 uppercase tracking-widest mb-4">Current Focus</p>
+<h3 class="text-7xl font-black tracking-tighter text-white">STRT.O <span class="text-secondary text-4xl align-top ml-2">↑ 12.4%</span></h3>
+<p class="text-lg text-white/60 max-w-xl mt-6 leading-relaxed">
+                            Sentiment analysis of the latest S-1 filing indicates a strong buy-side pressure. Infrastructure scaling costs are offset by unprecedented enterprise demand in the APAC region.
+                        </p>
+</div>
+<!-- High Contrast Chart Placeholder -->
+<div class="h-64 w-full bg-surface-container-lowest/50 rounded-xl relative flex items-end px-4 pb-4 overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center opacity-10">
+<span class="material-symbols-outlined text-[150px]" data-icon="monitoring">monitoring</span>
+</div>
+<div class="flex items-end gap-2 w-full h-40">
+<div class="flex-1 bg-white/5 h-[30%] rounded-t-sm"></div>
+<div class="flex-1 bg-white/5 h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[60%] rounded-t-sm border-t-2 border-primary"></div>
+<div class="flex-1 bg-primary/20 h-[55%] rounded-t-sm border-t-2 border-primary"></div>
+<div class="flex-1 bg-primary/20 h-[80%] rounded-t-sm border-t-2 border-primary"></div>
+<div class="flex-1 bg-primary/20 h-[95%] rounded-t-sm border-t-2 border-primary"></div>
+<div class="flex-1 bg-secondary/20 h-[70%] rounded-t-sm border-t-2 border-secondary"></div>
+<div class="flex-1 bg-secondary/20 h-[85%] rounded-t-sm border-t-2 border-secondary"></div>
+<div class="flex-1 bg-primary h-[100%] rounded-t-sm emerald-glow"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Metric Card -->
+<div class="col-span-4 bg-surface-container-high rounded-lg p-11 flex flex-col justify-between border border-white/5">
+<div>
+<span class="material-symbols-outlined text-secondary text-4xl mb-6" data-icon="shield_with_heart">shield_with_heart</span>
+<h4 class="text-2xl font-black tracking-tight text-white mb-2">Risk Assessment</h4>
+<p class="text-sm text-white/40 leading-relaxed">Agent 'Curator' has identified 3 critical vulnerabilities in the liquidity roadmap.</p>
+</div>
+<div class="space-y-6 mt-12">
+<div class="flex justify-between items-end border-b border-white/5 pb-4">
+<span class="text-[10px] uppercase font-bold text-white/40 tracking-widest">Volatility Index</span>
+<span class="text-xl font-bold text-white">0.42 <span class="text-[10px] text-error ml-1 font-normal">HIGH</span></span>
+</div>
+<div class="flex justify-between items-end border-b border-white/5 pb-4">
+<span class="text-[10px] uppercase font-bold text-white/40 tracking-widest">Market Saturation</span>
+<span class="text-xl font-bold text-white">18.4%</span>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-[10px] uppercase font-bold text-white/40 tracking-widest">Agent Trust Score</span>
+<span class="text-xl font-bold text-primary">98.2</span>
+</div>
+</div>
+</div>
+<!-- Narrow Technical Feed -->
+<div class="col-span-3 bg-surface-container-lowest rounded-lg p-8 border border-white/5">
+<h5 class="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-8 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span> Terminal Logs
+                </h5>
+<div class="space-y-6 font-mono text-[11px] leading-tight">
+<p class="text-white/60"><span class="text-primary">[SYS]</span> Parsing S-1 section 4...</p>
+<p class="text-white/40"><span class="text-secondary">[INF]</span> 243 entities cross-referenced.</p>
+<p class="text-white/60"><span class="text-primary">[SYS]</span> Extracting cap table data.</p>
+<p class="text-white/40"><span class="text-secondary">[INF]</span> Founder lock-up: 180 days.</p>
+<p class="text-white/20">...</p>
+<p class="text-error">[WRN] Abnormal dilution detected.</p>
+</div>
+</div>
+<!-- Middle Asymmetric Card -->
+<div class="col-span-5 bg-surface-container rounded-lg p-11 flex items-center gap-8 relative group overflow-hidden">
+<div class="flex-1">
+<h4 class="text-3xl font-black text-white mb-4 tracking-tighter">Founder Sentiment</h4>
+<p class="text-sm text-white/50 leading-relaxed mb-6">Aggregated from private roadshow audio and leaked board memos. Language patterns indicate moderate aggressive expansion intent.</p>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="voice_chat" style="font-variation-settings: 'FILL' 1;">voice_chat</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-white uppercase tracking-widest">Confidence Interval</p>
+<p class="text-lg font-black text-primary">A- Grade</p>
+</div>
+</div>
+</div>
+<div class="w-32 h-full absolute right-0 top-0 bg-primary/5 border-l border-primary/10 flex items-center justify-center">
+<span class="text-primary font-black text-4xl -rotate-90 whitespace-nowrap tracking-[0.5em] opacity-20">SENTIMENT</span>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="col-span-4 bg-[#1a1a1a] rounded-lg overflow-hidden border border-white/5 flex flex-col">
+<div class="p-6 bg-white/5 flex justify-between items-center">
+<span class="text-[10px] font-black uppercase tracking-widest text-white/40">Competitor Matrix</span>
+<span class="material-symbols-outlined text-white/20 text-sm" data-icon="more_horiz">more_horiz</span>
+</div>
+<div class="flex-1">
+<table class="w-full text-left">
+<thead class="bg-black/20 text-[9px] uppercase font-bold text-white/30 tracking-widest">
+<tr>
+<th class="px-6 py-4">Entity</th>
+<th class="px-6 py-4 text-right">MCAP</th>
+</tr>
+</thead>
+<tbody class="text-xs font-medium text-white/70">
+<tr class="border-b border-white/5">
+<td class="px-6 py-4">DataNexus</td>
+<td class="px-6 py-4 text-right font-mono">$1.2B</td>
+</tr>
+<tr class="border-b border-white/5">
+<td class="px-6 py-4">CloudStrata</td>
+<td class="px-6 py-4 text-right font-mono">$840M</td>
+</tr>
+<tr class="bg-primary/5">
+<td class="px-6 py-4 text-primary font-bold">STRT.O</td>
+<td class="px-6 py-4 text-right font-mono text-primary">$1.5B*</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 mt-auto">
+<button class="w-full py-3 bg-white/5 hover:bg-white/10 text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] rounded-md transition-colors">Compare Full Sector</button>
+</div>
+</div>
+</div>
+<!-- Section Spacer -->
+<div class="h-32"></div>
+<!-- Secondary Layout: Document Vault Access -->
+<section class="grid grid-cols-12 gap-8">
+<div class="col-span-3">
+<h2 class="text-4xl font-black text-white tracking-tighter leading-none mb-4">Raw Vault</h2>
+<p class="text-sm text-white/30 leading-relaxed">Direct access to un-redacted S-1 filings and historical prospectus data for cross-validation.</p>
+</div>
+<div class="col-span-9 grid grid-cols-3 gap-6">
+<div class="bg-surface-container rounded-lg p-6 group cursor-pointer hover:bg-surface-container-highest transition-all border border-transparent hover:border-primary/20">
+<div class="flex justify-between items-start mb-12">
+<span class="material-symbols-outlined text-4xl text-white/20 group-hover:text-primary transition-colors" data-icon="description">description</span>
+<span class="text-[10px] font-bold text-white/20 tracking-tighter">PDF / 4.2MB</span>
+</div>
+<h5 class="font-bold text-white text-sm mb-1">Q4-Prospectus.pdf</h5>
+<p class="text-[10px] uppercase tracking-widest text-white/30">Modified 2h ago</p>
+</div>
+<div class="bg-surface-container rounded-lg p-6 group cursor-pointer hover:bg-surface-container-highest transition-all border border-transparent hover:border-primary/20">
+<div class="flex justify-between items-start mb-12">
+<span class="material-symbols-outlined text-4xl text-white/20 group-hover:text-primary transition-colors" data-icon="folder_zip">folder_zip</span>
+<span class="text-[10px] font-bold text-white/20 tracking-tighter">ZIP / 118MB</span>
+</div>
+<h5 class="font-bold text-white text-sm mb-1">Cap-Table-Artifacts.zip</h5>
+<p class="text-[10px] uppercase tracking-widest text-white/30">Modified 4d ago</p>
+</div>
+<div class="bg-surface-container-lowest border-2 border-dashed border-white/5 rounded-lg p-6 flex flex-col items-center justify-center text-center group hover:border-primary/40 transition-all">
+<span class="material-symbols-outlined text-3xl text-white/10 mb-2 group-hover:scale-110 transition-transform" data-icon="upload_file">upload_file</span>
+<p class="text-[10px] font-bold text-white/20 uppercase tracking-widest">Add Document</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button: Contextual to Home/Analysis -->
+<div class="fixed bottom-12 right-12 z-50">
+<button class="h-16 w-16 rounded-full bg-primary text-on-primary flex items-center justify-center emerald-glow shadow-2xl hover:scale-110 transition-transform active:scale-95 group">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform" data-icon="smart_toy">smart_toy</span>
+</button>
+</div>
+</body></html>

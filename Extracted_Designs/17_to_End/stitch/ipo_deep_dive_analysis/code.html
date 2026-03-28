@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Databricks IPO Analysis | The Financial Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-background": "#e5e2e1",
+            "error": "#ffb4ab",
+            "surface-dim": "#131313",
+            "secondary": "#9fcaff",
+            "inverse-primary": "#006b55",
+            "on-primary-container": "#005643",
+            "surface-variant": "#353534",
+            "tertiary-container": "#bbbcbc",
+            "on-tertiary-container": "#4a4c4c",
+            "surface-container-lowest": "#0e0e0e",
+            "on-secondary-container": "#002b4d",
+            "tertiary-fixed": "#e2e2e2",
+            "secondary-container": "#3a95e8",
+            "on-error": "#690005",
+            "on-primary-fixed-variant": "#00513f",
+            "surface-container": "#201f1f",
+            "error-container": "#93000a",
+            "on-secondary-fixed": "#001d36",
+            "tertiary": "#d7d8d8",
+            "inverse-on-surface": "#313030",
+            "surface-tint": "#28dfb5",
+            "on-tertiary-fixed-variant": "#454747",
+            "surface": "#131313",
+            "outline-variant": "#3b4a44",
+            "surface-bright": "#3a3939",
+            "secondary-fixed-dim": "#9fcaff",
+            "on-surface": "#e5e2e1",
+            "surface-container-low": "#1c1b1b",
+            "background": "#131313",
+            "surface-container-high": "#2a2a2a",
+            "secondary-fixed": "#d1e4ff",
+            "on-primary": "#00382b",
+            "outline": "#85948d",
+            "on-secondary-fixed-variant": "#00497d",
+            "on-secondary": "#003258",
+            "on-primary-fixed": "#002118",
+            "tertiary-fixed-dim": "#c6c6c7",
+            "primary-fixed-dim": "#28dfb5",
+            "on-tertiary": "#2f3131",
+            "on-error-container": "#ffdad6",
+            "surface-container-highest": "#353534",
+            "primary-container": "#00d4aa",
+            "on-tertiary-fixed": "#1a1c1c",
+            "on-surface-variant": "#bacac2",
+            "primary-fixed": "#55fcd0",
+            "primary": "#46f1c5",
+            "inverse-surface": "#e5e2e1"
+          },
+          fontFamily: {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; background-color: #131313; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+  </style>
+</head>
+<body class="text-on-background selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl transition-all duration-300">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-[1440px] mx-auto font-['Inter'] antialiased tracking-tight">
+<div class="text-2xl font-black tracking-tighter text-[#46f1c5] uppercase">
+        The Financial Curator
+      </div>
+<div class="hidden md:flex items-center gap-x-12">
+<a class="text-[#9fcaff] hover:text-[#46f1c5] transition-colors duration-300" href="#">Home</a>
+<a class="text-[#46f1c5] font-bold border-b-2 border-[#46f1c5] pb-1" href="#">IPOs</a>
+<a class="text-[#9fcaff] hover:text-[#46f1c5] transition-colors duration-300" href="#">Watchlist</a>
+<a class="text-[#9fcaff] hover:text-[#46f1c5] transition-colors duration-300" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-x-6">
+<button class="material-symbols-outlined text-[#9fcaff] hover:bg-[#353534]/50 p-2 rounded-full transition-all duration-200" data-icon="search">search</button>
+<button class="material-symbols-outlined text-[#9fcaff] hover:bg-[#353534]/50 p-2 rounded-full transition-all duration-200" data-icon="notifications">notifications</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="minimalist studio portrait of a professional male analyst in high contrast lighting, dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBb0QON27AwJOFRmkHPAebzrJI6gQLxrfEkfE18RkIkuglEnT-gTcj9M7o4oyeCDqHbGdTpNNbjvhRl-uXYfqHlvE-owIACHeXl5Qq3QYy540tNDHfyi0BcFfEIQ-MpQOcYnqPZetKvWv50jLfyqoPsNx8Cd94A1FudAEEjBSB-v3xMiCxnpxA1gcdNgDnonY0CT8TpHWEc2Patu6hG96huj3Hiy9Pxb6JKwtt98CUcUvG0eRxRHcY2WKEt9DATm6FMh9nUsmQ60y1"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 max-w-[1440px] mx-auto px-12">
+<!-- Hero Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+<div class="flex items-center gap-8">
+<div class="w-24 h-24 bg-white rounded-lg p-4 flex items-center justify-center shadow-lg">
+<img alt="Databricks Logo" class="w-full object-contain" data-alt="clean vector logo of databricks software company against a neutral studio white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcMV_X6WGPeiprTCw8DwXzgX8yGIFGnh7yygkFnIDu6OH4PeGf2FqdS_73pFr6az763UjTTCczFBZ3ydQ0gL4X2IW8RdkQczpZQD4NeyNObCraiqqHVgI2azxCihzGukH9R1dpeZjYI5pPvEQ8kcEe9wOafolgDHx_ti0k3GSwRDXbjPcKQ7virRa-jmcMLOPc5EAkN9MTPgOp4UfEDTfov_x5_Ji_EhOQxP2DbLpsaQ-ar2BlwAZNKyzkFBvDojA-WqfnoxwlkP0i"/>
+</div>
+<div>
+<h1 class="text-7xl font-black tracking-tighter leading-none mb-2">Databricks</h1>
+<div class="flex items-center gap-3">
+<span class="bg-primary/20 text-primary px-4 py-1.5 rounded-full text-sm font-bold tracking-widest uppercase">Strong Buy</span>
+<span class="text-outline text-sm font-medium tracking-wide">NYSE: DBRX (Expected)</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="h-16 px-8 rounded-xl font-bold bg-primary text-on-primary flex items-center gap-2 hover:opacity-90 transition-all shadow-[0_0_20px_rgba(70,241,197,0.2)]">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+          Add to Watchlist
+        </button>
+<button class="h-16 px-8 rounded-xl font-bold bg-surface-container-highest text-on-surface flex items-center gap-2 hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined" data-icon="ios_share">ios_share</span>
+          Share Report
+        </button>
+</div>
+</header>
+<!-- Content Tabs -->
+<div class="flex gap-12 border-b border-outline-variant/20 mb-16">
+<button class="pb-6 text-xl font-bold text-primary border-b-2 border-primary">Summary</button>
+<button class="pb-6 text-xl font-medium text-secondary hover:text-primary transition-colors">Financials</button>
+<button class="pb-6 text-xl font-medium text-secondary hover:text-primary transition-colors">Important Dates</button>
+<button class="pb-6 text-xl font-medium text-secondary hover:text-primary transition-colors">Risk Assessment</button>
+</div>
+<!-- Bento Grid Section -->
+<div class="bento-grid">
+<!-- AI Narrative Report -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container rounded-lg p-10 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 text-primary mb-6">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-xs font-bold tracking-[0.2em] uppercase">Curator AI Insights</span>
+</div>
+<h2 class="text-3xl font-bold mb-8 leading-tight">Data Intelligence at Scale: The Case for Databricks dominance.</h2>
+<div class="space-y-6 text-lg text-on-surface-variant leading-relaxed opacity-90">
+<p>Databricks enters the public market as the undisputed leader in Data Lakehouse architecture. Unlike traditional snowflake models, their unified platform simplifies massive data engineering while fueling the next wave of generative AI applications.</p>
+<p>Analysis of their current S-1 filing indicates a Net Revenue Retention (NRR) of 140%+, signaling an exceptionally "sticky" enterprise product. With the acquisition of MosaicML, their vertical integration into the AI infrastructure layer is complete.</p>
+</div>
+</div>
+<div class="mt-12 flex gap-12 pt-12 border-t border-outline-variant/10">
+<div>
+<span class="block text-[0.7rem] font-bold tracking-widest text-outline mb-1 uppercase">ESTIMATED VALUATION</span>
+<span class="text-2xl font-bold text-secondary">$43.0B - $50.0B</span>
+</div>
+<div>
+<span class="block text-[0.7rem] font-bold tracking-widest text-outline mb-1 uppercase">OFFER PRICE RANGE</span>
+<span class="text-2xl font-bold text-secondary">$74 - $82</span>
+</div>
+<div>
+<span class="block text-[0.7rem] font-bold tracking-widest text-outline mb-1 uppercase">REVENUE GROWTH (YOY)</span>
+<span class="text-2xl font-bold text-primary">+60%</span>
+</div>
+</div>
+</section>
+<!-- Risk Meter Card -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-lg p-10 flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+<h3 class="text-xs font-bold tracking-[0.2em] text-outline mb-12 uppercase relative z-10">Risk Factor Meter</h3>
+<!-- Circular Gauge Mockup -->
+<div class="relative w-64 h-64 flex items-center justify-center relative z-10">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="128" cy="128" fill="transparent" r="110" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="128" cy="128" fill="transparent" r="110" stroke="currentColor" stroke-dasharray="691" stroke-dashoffset="520" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-6xl font-black tracking-tighter">24</span>
+<span class="text-xs font-bold text-primary tracking-widest uppercase">Low Risk</span>
+</div>
+</div>
+<div class="mt-12 space-y-4 w-full relative z-10">
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-xl group cursor-help">
+<span class="text-sm font-medium">Market Volatility</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="info">info</span>
+<!-- Simple Tooltip Mockup -->
+<div class="absolute hidden group-hover:block bg-surface-bright p-3 rounded-lg text-xs w-48 -translate-y-16 -translate-x-12 shadow-xl border border-outline-variant/20">
+              Low exposure to immediate interest rate fluctuations.
+            </div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-xl group cursor-help">
+<span class="text-sm font-medium">Competitive Moat</span>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="info">info</span>
+</div>
+</div>
+</section>
+<!-- Charts Section -->
+<section class="col-span-12 lg:col-span-12 bg-surface-container rounded-lg p-10">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h3 class="text-2xl font-bold mb-2">Demand Analysis</h3>
+<p class="text-outline text-sm">Real-time Grey Market Premium (GMP) &amp; Subscription tracking</p>
+</div>
+<div class="flex gap-6">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-sm font-medium">GMP Trend</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-sm font-medium">Subscription Rate</span>
+</div>
+</div>
+</div>
+<!-- Chart Canvas Mockup -->
+<div class="w-full h-[400px] relative">
+<!-- Area Chart Mock -->
+<svg class="w-full h-full" viewbox="0 0 1000 400">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#46f1c5" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#46f1c5" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<g stroke="#3b4a44" stroke-opacity="0.2">
+<line x1="0" x2="1000" y1="100" y2="100"></line>
+<line x1="0" x2="1000" y1="200" y2="200"></line>
+<line x1="0" x2="1000" y1="300" y2="300"></line>
+</g>
+<!-- Data Path -->
+<path d="M0,350 Q100,320 200,330 T400,280 T600,200 T800,150 T1000,120 V400 H0 Z" fill="url(#chartGradient)"></path>
+<path d="M0,350 Q100,320 200,330 T400,280 T600,200 T800,150 T1000,120" fill="none" stroke="#46f1c5" stroke-width="4"></path>
+<!-- Secondary Data Path -->
+<path d="M0,380 L200,360 L400,340 L600,300 L800,220 L1000,180" fill="none" stroke="#9fcaff" stroke-dasharray="8 4" stroke-width="3"></path>
+</svg>
+<!-- Tooltip Marker -->
+<div class="absolute left-3/4 top-1/4 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-px h-64 bg-primary/40 mb-2"></div>
+<div class="bg-surface-bright p-4 rounded-xl border border-primary/20 shadow-2xl">
+<div class="text-[0.6rem] font-bold text-outline uppercase mb-1">Current GMP</div>
+<div class="text-xl font-bold text-primary">+$42.50 (54%)</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Context Suggestions & Nudges -->
+<section class="col-span-12 grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+<div class="bg-surface-container-low rounded-lg p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary" data-icon="lightbulb">lightbulb</span>
+<h4 class="font-bold text-lg">For Context</h4>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+            Snowflake (SNOW) saw a 111% first-day pop. Databricks shares similar growth metrics but with higher AI-integrated service revenue.
+          </p>
+<a class="text-primary text-sm font-bold flex items-center gap-1 group" href="#">
+            Compare with SNOW
+            <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="bg-surface-container-low rounded-lg p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary" data-icon="history">history</span>
+<h4 class="font-bold text-lg">Timeline View</h4>
+</div>
+<ul class="space-y-4">
+<li class="flex items-start gap-4">
+<div class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5"></div>
+<div>
+<div class="text-xs font-bold uppercase tracking-widest text-outline">Oct 12</div>
+<div class="text-sm">Final Prospectus Filed</div>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-1.5 h-1.5 rounded-full bg-surface-container-highest mt-1.5"></div>
+<div>
+<div class="text-xs font-bold uppercase tracking-widest text-outline">Oct 24</div>
+<div class="text-sm">Listing Date (Expected)</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container-low rounded-lg p-8 border border-primary/10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="smart_toy">smart_toy</span>
+<h4 class="font-bold text-lg">Personalized Nudge</h4>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">
+            Based on your interest in Enterprise SaaS and AI, Databricks aligns with 94% of your portfolio strategy.
+          </p>
+<button class="w-full h-12 rounded-lg bg-surface-container-highest text-primary text-sm font-bold hover:bg-primary hover:text-on-primary transition-all">
+            Set Entry Alert
+          </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Sidebar Component (Floating Toggle Style) -->
+<aside class="hidden xl:flex flex-col h-screen w-20 fixed left-0 top-0 bg-[#0e0e0e] border-r border-outline-variant/10 items-center py-8 gap-y-10 z-[60]">
+<div class="text-[#46f1c5] font-bold text-xl tracking-widest">C</div>
+<div class="flex flex-col gap-y-8">
+<button class="p-3 text-[#46f1c5] bg-[#201f1f] rounded-xl material-symbols-outlined" data-icon="dashboard">dashboard</button>
+<button class="p-3 text-[#9fcaff] hover:bg-[#201f1f]/50 rounded-xl material-symbols-outlined transition-all" data-icon="insert_chart">insert_chart</button>
+<button class="p-3 text-[#9fcaff] hover:bg-[#201f1f]/50 rounded-xl material-symbols-outlined transition-all" data-icon="visibility">visibility</button>
+<button class="p-3 text-[#9fcaff] hover:bg-[#201f1f]/50 rounded-xl material-symbols-outlined transition-all" data-icon="menu_book">menu_book</button>
+</div>
+<div class="mt-auto flex flex-col gap-y-6">
+<button class="p-3 text-[#9fcaff] hover:bg-[#201f1f]/50 rounded-xl material-symbols-outlined" data-icon="settings">settings</button>
+<button class="p-3 text-[#9fcaff] hover:bg-[#201f1f]/50 rounded-xl material-symbols-outlined" data-icon="help_outline">help_outline</button>
+</div>
+</aside>
+</body></html>

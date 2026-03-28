@@ -1,0 +1,322 @@
+﻿
+> frontend@0.1.0 build
+> next build
+
+  Γû▓ Next.js 14.2.35
+
+   Creating an optimized production build ...
+node.exe : <w> [webpack
+.cache.PackFileCacheStr
+ategy] Skipped not 
+serializable cache 
+item 'Compilation/modul
+es|C:\Users\ASUS\Downlo
+ads\IPO Analysis Projec
+t\frontend\node_modules
+\next\dist\build\webpac
+k\loaders\css-loader\sr
+c\index.js??ruleSet[1].
+rules[14].oneOf[12].use
+[2]!C:\Users\ASUS\Downl
+oads\IPO Analysis Proje
+ct\frontend\node_module
+s\next\dist\build\webpa
+ck\loaders\postcss-load
+er\src\index.js??ruleSe
+t[1].rules[14].oneOf[12
+].use[3]!C:\Users\ASUS\
+Downloads\IPO Analysis 
+Project\frontend\src\ap
+p\globals.css': No 
+serializer registered 
+for PostCSSSyntaxError
+At C:\Program Files\nod
+ejs\npm.ps1:29 char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (<w> [webpack.   
+ ca...tCSSSyntaxErr    
+or:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+<w> while serializing w
+ebpack/lib/cache/PackFi
+leCacheStrategy.PackCon
+tentItems -> webpack/li
+b/NormalModule -> webpa
+ck/lib/ModuleBuildError
+ -> PostCSSSyntaxError
+Failed to compile.
+
+./src/app/globals.css:4
+0:5
+Syntax error: C:\Users\
+ASUS\Downloads\IPO 
+Analysis Project\fronte
+nd\src\app\globals.css 
+The `bg-surface/60` 
+class does not exist. 
+If `bg-surface/60` is 
+a custom class, make 
+sure it is defined 
+within a `@layer` 
+directive.
+
+ [90m 38 | 
+[39m[36m@layer[39m 
+utilities [33m{[39m
+ [90m 39 | [39m  
+[33m.glass[39m 
+[33m{[39m
+[1m[31m>[39m[22m[9
+0m 40 | [39m    
+[36m@apply[39m 
+bg-surface/60 backdrop-
+blur-[33m[[39m20px[3
+3m][39m[33m;[39m
+ [90m    | [39m    
+[1m[31m^[39m[22m
+ [90m 41 | [39m  
+[33m}[39m
+ [90m 42 | [39m  [33
+m.gradient-primary[39m
+ [33m{[39m
+
+./src/app/globals.css
+Syntax error: C:\Users\
+ASUS\Downloads\IPO 
+Analysis Project\fronte
+nd\src\app\globals.css 
+The `selection:bg-prima
+ry/20` class does not 
+exist. If `selection:bg
+-primary/20` is a 
+custom class, make 
+sure it is defined 
+within a `@layer` 
+directive. (1:1)
+
+[1m[31m>[39m[22m[9
+0m 1 | [39m[36m@tailw
+ind[39m 
+base[33m;[39m
+ [90m   | [39m[1m[3
+1m^[39m[22m
+ [90m 2 | [39m[36m@t
+ailwind[39m 
+components[33m;[39m
+ [90m 3 | [39m[36m@t
+ailwind[39m 
+utilities[33m;[39m
+
+    at 
+tryRunOrWebpackError (C
+:\Users\ASUS\Downloads\
+IPO Analysis Project\fr
+ontend\node_modules\nex
+t\dist\compiled\webpack
+\bundle5.js:28:312989)
+    at __webpack_requir
+e_module__ (C:\Users\AS
+US\Downloads\IPO 
+Analysis Project\fronte
+nd\node_modules\next\di
+st\compiled\webpack\bun
+dle5.js:28:131165)
+    at __nested_webpack
+_require_153728__ (C:\U
+sers\ASUS\Downloads\IPO
+ Analysis Project\front
+end\node_modules\next\d
+ist\compiled\webpack\bu
+ndle5.js:28:130607)
+    at C:\Users\ASUS\Do
+wnloads\IPO Analysis Pr
+oject\frontend\node_mod
+ules\next\dist\compiled
+\webpack\bundle5.js:28:
+131454
+    at symbolIterator (
+C:\Users\ASUS\Downloads
+\IPO Analysis Project\f
+rontend\node_modules\ne
+xt\dist\compiled\neo-as
+ync\async.js:1:14444)
+    at done (C:\Users\A
+SUS\Downloads\IPO 
+Analysis Project\fronte
+nd\node_modules\next\di
+st\compiled\neo-async\a
+sync.js:1:14824)
+    at Hook.eval [as 
+callAsync] (eval at 
+create (C:\Users\ASUS\D
+ownloads\IPO Analysis P
+roject\frontend\node_mo
+dules\next\dist\compile
+d\webpack\bundle5.js:13
+:28858), 
+<anonymous>:15:1)
+    at Hook.CALL_ASYNC_
+DELEGATE [as 
+_callAsync] (C:\Users\A
+SUS\Downloads\IPO 
+Analysis Project\fronte
+nd\node_modules\next\di
+st\compiled\webpack\bun
+dle5.js:13:26012)
+    at C:\Users\ASUS\Do
+wnloads\IPO Analysis Pr
+oject\frontend\node_mod
+ules\next\dist\compiled
+\webpack\bundle5.js:28:
+130328
+    at symbolIterator (
+C:\Users\ASUS\Downloads
+\IPO Analysis Project\f
+rontend\node_modules\ne
+xt\dist\compiled\neo-as
+ync\async.js:1:14402)
+-- inner error --
+Syntax error: C:\Users\
+ASUS\Downloads\IPO 
+Analysis Project\fronte
+nd\src\app\globals.css 
+The `selection:bg-prima
+ry/20` class does not 
+exist. If `selection:bg
+-primary/20` is a 
+custom class, make 
+sure it is defined 
+within a `@layer` 
+directive. (1:1)
+
+[1m[31m>[39m[22m[9
+0m 1 | [39m[36m@tailw
+ind[39m 
+base[33m;[39m
+ [90m   | [39m[1m[3
+1m^[39m[22m
+ [90m 2 | [39m[36m@t
+ailwind[39m 
+components[33m;[39m
+ [90m 3 | [39m[36m@t
+ailwind[39m 
+utilities[33m;[39m
+
+    at 
+Object.<anonymous> (C:\
+Users\ASUS\Downloads\IP
+O Analysis Project\fron
+tend\node_modules\next\
+dist\build\webpack\load
+ers\css-loader\src\inde
+x.js??ruleSet[1].rules[
+14].oneOf[12].use[2]!C:
+\Users\ASUS\Downloads\I
+PO Analysis Project\fro
+ntend\node_modules\next
+\dist\build\webpack\loa
+ders\postcss-loader\src
+\index.js??ruleSet[1].r
+ules[14].oneOf[12].use[
+3]!C:\Users\ASUS\Downlo
+ads\IPO Analysis Projec
+t\frontend\src\app\glob
+als.css:1:7)
+    at C:\Users\ASUS\Do
+wnloads\IPO Analysis Pr
+oject\frontend\node_mod
+ules\next\dist\compiled
+\webpack\bundle5.js:28:
+922493
+    at Hook.eval [as 
+call] (eval at create (
+C:\Users\ASUS\Downloads
+\IPO Analysis Project\f
+rontend\node_modules\ne
+xt\dist\compiled\webpac
+k\bundle5.js:13:28636),
+ <anonymous>:7:1)
+    at 
+Hook.CALL_DELEGATE [as 
+_call] (C:\Users\ASUS\D
+ownloads\IPO Analysis P
+roject\frontend\node_mo
+dules\next\dist\compile
+d\webpack\bundle5.js:13
+:25906)
+    at C:\Users\ASUS\Do
+wnloads\IPO Analysis Pr
+oject\frontend\node_mod
+ules\next\dist\compiled
+\webpack\bundle5.js:28:
+131198
+    at 
+tryRunOrWebpackError (C
+:\Users\ASUS\Downloads\
+IPO Analysis Project\fr
+ontend\node_modules\nex
+t\dist\compiled\webpack
+\bundle5.js:28:312943)
+    at __webpack_requir
+e_module__ (C:\Users\AS
+US\Downloads\IPO 
+Analysis Project\fronte
+nd\node_modules\next\di
+st\compiled\webpack\bun
+dle5.js:28:131165)
+    at __nested_webpack
+_require_153728__ (C:\U
+sers\ASUS\Downloads\IPO
+ Analysis Project\front
+end\node_modules\next\d
+ist\compiled\webpack\bu
+ndle5.js:28:130607)
+    at C:\Users\ASUS\Do
+wnloads\IPO Analysis Pr
+oject\frontend\node_mod
+ules\next\dist\compiled
+\webpack\bundle5.js:28:
+131454
+    at symbolIterator (
+C:\Users\ASUS\Downloads
+\IPO Analysis Project\f
+rontend\node_modules\ne
+xt\dist\compiled\neo-as
+ync\async.js:1:14444)
+
+Generated code for C:\U
+sers\ASUS\Downloads\IPO
+ Analysis Project\front
+end\node_modules\next\d
+ist\build\webpack\loade
+rs\css-loader\src\index
+.js??ruleSet[1].rules[1
+4].oneOf[12].use[2]!C:\
+Users\ASUS\Downloads\IP
+O Analysis Project\fron
+tend\node_modules\next\
+dist\build\webpack\load
+ers\postcss-loader\src\
+index.js??ruleSet[1].ru
+les[14].oneOf[12].use[3
+]!C:\Users\ASUS\Downloa
+ds\IPO Analysis Project
+\frontend\src\app\globa
+ls.css
+
+Import trace for 
+requested module:
+./src/app/globals.css
+
+
+> Build failed because 
+of webpack errors

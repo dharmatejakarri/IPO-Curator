@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IPO Calendar - The Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#201f1f",
+                        "surface": "#131313",
+                        "tertiary": "#d7d8d8",
+                        "primary-fixed": "#55fcd0",
+                        "on-primary-fixed-variant": "#00513f",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-fixed": "#e2e2e2",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-dim": "#131313",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-container": "#002b4d",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006b55",
+                        "on-error": "#690005",
+                        "on-primary-container": "#005643",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#00497d",
+                        "surface-tint": "#28dfb5",
+                        "secondary-container": "#3a95e8",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed-dim": "#9fcaff",
+                        "error": "#ffb4ab",
+                        "secondary": "#9fcaff",
+                        "on-secondary-fixed": "#001d36",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "outline": "#85948d",
+                        "tertiary-container": "#bbbcbc",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#4a4c4c",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary": "#2f3131",
+                        "primary-fixed-dim": "#28dfb5",
+                        "on-surface": "#e5e2e1",
+                        "on-primary": "#00382b",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-surface-variant": "#bacac2",
+                        "primary-container": "#00d4aa",
+                        "on-primary-fixed": "#002118",
+                        "primary": "#46f1c5",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "background": "#131313",
+                        "inverse-on-surface": "#313030",
+                        "surface-variant": "#353534",
+                        "on-secondary": "#003258",
+                        "outline-variant": "#3b4a44"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.7rem;
+        }
+        .glass-header {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #353534; border-radius: 10px; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-8 h-20 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-[#46f1c5] uppercase">The Curator</span>
+<nav class="hidden md:flex gap-8">
+<a class="text-[#9fcaff] opacity-70 hover:opacity-100 transition-all font-['Inter'] text-sm font-medium tracking-wide uppercase" href="#">Markets</a>
+<a class="text-[#46f1c5] font-bold font-['Inter'] text-sm font-medium tracking-wide uppercase" href="#">IPO Calendar</a>
+<a class="text-[#9fcaff] opacity-70 hover:opacity-100 transition-all font-['Inter'] text-sm font-medium tracking-wide uppercase" href="#">News</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#353534] transition-colors duration-300 text-[#46f1c5]">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#353534] transition-colors duration-300 text-[#46f1c5]">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 border-r border-[#353534]/15 bg-[#0e0e0e] hidden lg:flex flex-col pt-24 pb-8 px-4 z-40">
+<div class="mb-10 px-4">
+<h2 class="text-xl font-bold text-[#46f1c5]">The Curator</h2>
+<p class="text-[0.7rem] uppercase tracking-widest text-[#9fcaff] opacity-50">Financial Insights</p>
+</div>
+<div class="space-y-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-[#9fcaff] opacity-70 hover:opacity-100 hover:bg-[#201f1f] hover:text-[#46f1c5] transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium text-sm tracking-wide uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#46f1c5] bg-[#201f1f] rounded-xl font-bold border-l-4 border-[#46f1c5] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-medium text-sm tracking-wide uppercase">IPO Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#9fcaff] opacity-70 hover:opacity-100 hover:bg-[#201f1f] hover:text-[#46f1c5] transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-medium text-sm tracking-wide uppercase">Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#9fcaff] opacity-70 hover:opacity-100 hover:bg-[#201f1f] hover:text-[#46f1c5] transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined" data-icon="pie_chart">pie_chart</span>
+<span class="font-medium text-sm tracking-wide uppercase">Portfolio</span>
+</a>
+</div>
+<div class="pt-8 border-t border-[#353534]/20">
+<a class="flex items-center gap-3 px-4 py-3 text-[#9fcaff] opacity-70 hover:opacity-100 hover:bg-[#201f1f] transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium text-sm tracking-wide uppercase">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-32 px-8 pb-20 min-h-screen">
+<div class="max-w-[1400px] mx-auto">
+<!-- Page Header -->
+<div class="mb-16">
+<h1 class="text-7xl md:text-8xl font-black tracking-tighter text-[#e5e2e1] mb-4">
+                    IPO <span class="text-[#46f1c5]">CALENDAR</span>
+</h1>
+<p class="text-xl text-[#9fcaff] opacity-60 font-light max-w-2xl leading-relaxed">
+                    Visualizing the next wave of market entrants with institutional-grade data and curated sentiment analysis.
+                </p>
+</div>
+<!-- Stats Overview Bento Section -->
+<section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-8 rounded-lg border border-outline-variant/10">
+<span class="text-[0.75rem] font-bold tracking-[0.15em] text-[#9fcaff] uppercase mb-4 block">Total Pipeline</span>
+<div class="flex items-end gap-3">
+<span class="text-5xl font-bold">142</span>
+<span class="text-[#46f1c5] text-sm font-bold mb-2 flex items-center"><span class="material-symbols-outlined scale-75">trending_up</span> +12%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg border border-outline-variant/10">
+<span class="text-[0.75rem] font-bold tracking-[0.15em] text-[#9fcaff] uppercase mb-4 block">Market Sentiment</span>
+<div class="flex items-center gap-4">
+<span class="text-3xl font-bold uppercase tracking-tight">Bullish</span>
+<div class="flex-grow h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[72%] shadow-[0_0_15px_rgba(70,241,197,0.4)]"></div>
+</div>
+<span class="text-sm font-bold opacity-60">72%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg border border-outline-variant/10">
+<span class="text-[0.75rem] font-bold tracking-[0.15em] text-[#9fcaff] uppercase mb-4 block">Est. Weekly Vol.</span>
+<div class="flex items-end gap-3">
+<span class="text-5xl font-bold">$4.2B</span>
+<span class="text-[#9fcaff] text-sm font-medium mb-2 opacity-50">Target Raise</span>
+</div>
+</div>
+</section>
+<!-- Interactive Timeline Header -->
+<section class="mb-12 sticky top-24 z-30">
+<div class="glass-header rounded-xl p-4 overflow-x-auto whitespace-nowrap scrollbar-hide flex items-center gap-4 border border-outline-variant/10">
+<button class="px-6 py-3 rounded-lg bg-surface-container-highest text-[#46f1c5] font-bold border border-[#46f1c5]/30">OCT 23 - 29</button>
+<button class="px-6 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface opacity-40 hover:opacity-100">OCT 30 - NOV 05</button>
+<button class="px-6 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface opacity-40 hover:opacity-100">NOV 06 - 12</button>
+<button class="px-6 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface opacity-40 hover:opacity-100">NOV 13 - 19</button>
+<button class="px-6 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface opacity-40 hover:opacity-100">NOV 20 - 26</button>
+<button class="px-6 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface opacity-40 hover:opacity-100">LATER Q4</button>
+</div>
+</section>
+<div class="flex flex-col xl:flex-row gap-12">
+<!-- Main Timeline Feed -->
+<div class="flex-grow space-y-8">
+<div class="flex items-center gap-4 mb-6">
+<span class="h-px flex-grow bg-outline-variant/20"></span>
+<h3 class="text-sm font-bold tracking-[0.2em] uppercase text-secondary">Monday, October 23</h3>
+<span class="h-px flex-grow bg-outline-variant/20"></span>
+</div>
+<!-- IPO Bento Card: Reddit -->
+<div class="bg-surface-container rounded-lg p-10 group hover:bg-surface-container-high transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="flex items-center gap-8">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest flex items-center justify-center border border-outline-variant/10 overflow-hidden">
+<div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center font-black text-2xl">r/</div>
+</div>
+<div>
+<h4 class="text-3xl font-bold tracking-tight mb-1">Reddit, Inc.</h4>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold tracking-widest uppercase bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded">NYSE: RDDT</span>
+<span class="text-xs font-bold tracking-widest uppercase text-secondary opacity-60">Status: Filed</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-12 text-left md:text-right">
+<div>
+<span class="text-[0.65rem] font-bold tracking-[0.1em] text-[#9fcaff] uppercase block mb-1 opacity-50">Target Valuation</span>
+<span class="text-xl font-bold">$6.5B</span>
+</div>
+<div>
+<span class="text-[0.65rem] font-bold tracking-[0.1em] text-[#9fcaff] uppercase block mb-1 opacity-50">Expected Date</span>
+<span class="text-xl font-bold">Oct 24, 09:30</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-xl font-bold tracking-wide transition-all scale-100 active:scale-95 shadow-[0_10px_30px_rgba(70,241,197,0.2)]">
+                                ANALYZE
+                            </button>
+</div>
+</div>
+<!-- IPO Bento Card: Stripe -->
+<div class="bg-surface-container rounded-lg p-10 group hover:bg-surface-container-high transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 opacity-90">
+<div class="flex items-center gap-8">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest flex items-center justify-center border border-outline-variant/10 overflow-hidden">
+<div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center font-black text-2xl italic">S</div>
+</div>
+<div>
+<h4 class="text-3xl font-bold tracking-tight mb-1">Stripe</h4>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold tracking-widest uppercase bg-surface-container-highest text-secondary px-2 py-0.5 rounded">NASDAQ: STRP</span>
+<span class="text-xs font-bold tracking-widest uppercase text-[#46f1c5] opacity-80">Status: Pricing</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-12 text-left md:text-right">
+<div>
+<span class="text-[0.65rem] font-bold tracking-[0.1em] text-[#9fcaff] uppercase block mb-1 opacity-50">Target Valuation</span>
+<span class="text-xl font-bold">$50.0B</span>
+</div>
+<div>
+<span class="text-[0.65rem] font-bold tracking-[0.1em] text-[#9fcaff] uppercase block mb-1 opacity-50">Expected Date</span>
+<span class="text-xl font-bold">Oct 26, 09:30</span>
+</div>
+</div>
+<button class="bg-surface-container-highest hover:bg-primary hover:text-on-primary text-[#46f1c5] px-8 py-4 rounded-xl font-bold tracking-wide transition-all border border-primary/20">
+                                ANALYZE
+                            </button>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-12 mb-6">
+<span class="h-px flex-grow bg-outline-variant/20"></span>
+<h3 class="text-sm font-bold tracking-[0.2em] uppercase text-secondary">Friday, October 27</h3>
+<span class="h-px flex-grow bg-outline-variant/20"></span>
+</div>
+<!-- IPO Bento Card: Klarna -->
+<div class="bg-surface-container rounded-lg p-10 group hover:bg-surface-container-high transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="flex items-center gap-8">
+<div class="w-20 h-20 rounded-2xl bg-[#FFB3C7] flex items-center justify-center border border-outline-variant/10 overflow-hidden">
+<span class="text-black font-black text-xl">K.</span>
+</div>
+<div>
+<h4 class="text-3xl font-bold tracking-tight mb-1">Klarna Holding</h4>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold tracking-widest uppercase bg-surface-container-highest text-secondary px-2 py-0.5 rounded">LSE: KLNA</span>
+<span class="text-xs font-bold tracking-widest uppercase text-secondary opacity-60">Status: Rumored</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-12 text-left md:text-right">
+<div>
+<span class="text-[0.65rem] font-bold tracking-[0.1em] text-[#9fcaff] uppercase block mb-1 opacity-50">Target Valuation</span>
+<span class="text-xl font-bold">$15.2B</span>
+</div>
+<div>
+<span class="text-[0.65rem] font-bold tracking-[0.1em] text-[#9fcaff] uppercase block mb-1 opacity-50">Expected Date</span>
+<span class="text-xl font-bold">TBD Q4</span>
+</div>
+</div>
+<button class="bg-surface-container-highest hover:bg-primary hover:text-on-primary text-[#46f1c5] px-8 py-4 rounded-xl font-bold tracking-wide transition-all border border-primary/20">
+                                ANALYZE
+                            </button>
+</div>
+</div>
+</div>
+<!-- Featured Sidebar -->
+<aside class="xl:w-[450px] space-y-8">
+<div class="bg-[#1c1b1b] rounded-lg p-1 w-full">
+<div class="relative rounded-lg overflow-hidden h-[300px]">
+<img class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700" data-alt="dramatic cinematic wide shot of a modern financial trading floor with glowing blue screens and motion blur of traders in a sleek dark environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYy0-ZucgtaRHZ7_f4nY-clYq4WVrhATkGCJMk24ovVFllbc7vL1JYtq4FfF9gczoP9CL1f2ysoOYVI0HQqgGH20Lu6WiTKhIOhNadTWoZ-vdz6fyPmC9yJ_zGIE8u9eSzLVe58lgmy4eIGyqpAxiaUwg1GO5NDZ4ayh9687YbI2CGWpL1INnOR1kGjafD9IUID_RmEpjil2iX3F7gwavJBAxADqtLT7o9UI3qwV_VVBwhMbPXZS2pM1hvF6gzi2qHdaHgjOfmqOCK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1c1b1b] via-[#1c1b1b]/40 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<span class="text-[0.6rem] font-black tracking-[0.3em] bg-primary text-on-primary px-3 py-1 rounded-full uppercase inline-block mb-3">Hottest Upcoming</span>
+<h3 class="text-4xl font-bold tracking-tighter">SpaceX Starlink</h3>
+</div>
+</div>
+<div class="p-8 space-y-6">
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-4">
+<span class="text-sm text-secondary opacity-60 font-medium">Retail Interest</span>
+<span class="text-lg font-bold text-primary">Extremely High</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-4">
+<span class="text-sm text-secondary opacity-60 font-medium">Analyst Consensus</span>
+<span class="text-lg font-bold text-secondary">Overweight</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-secondary opacity-60 font-medium">Institutional Demand</span>
+<span class="text-lg font-bold">14x Oversubscribed</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-primary/10 mt-4">
+<p class="text-sm leading-relaxed text-[#9fcaff] italic">
+                                    "Starlink's potential spin-off represents the most anticipated liquidity event in the satellite communications sector since 2002."
+                                </p>
+<div class="mt-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest"></div>
+<span class="text-xs font-bold uppercase tracking-wider">Chief Analyst - The Curator</span>
+</div>
+</div>
+<button class="w-full h-16 bg-white/5 hover:bg-white/10 text-white rounded-xl border border-white/10 font-bold transition-all flex items-center justify-center gap-2 group">
+                                View Deep-Dive Report
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Pipeline Stats Sidebar -->
+<div class="space-y-4">
+<div class="bg-surface-container-low p-6 rounded-lg border border-outline-variant/10 flex items-center gap-6">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div>
+<h5 class="text-xs font-bold text-secondary opacity-50 uppercase tracking-widest">Avg. IPO Post-Gain</h5>
+<p class="text-2xl font-bold">+18.4%</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg border border-outline-variant/10 flex items-center gap-6">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<h5 class="text-xs font-bold text-secondary opacity-50 uppercase tracking-widest">Tech Sector Weight</h5>
+<p class="text-2xl font-bold">42.1%</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Contextual FAB - Restricted to Dashboard/Main screens -->
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-[0_0_30px_rgba(70,241,197,0.4)] hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined font-bold" data-icon="add">add</span>
+</button>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 bg-[#131313]/90 backdrop-blur-xl border-t border-[#353534]/30 flex items-center justify-around px-4 z-50">
+<a class="flex flex-col items-center gap-1 text-[#9fcaff] opacity-50" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[0.6rem] font-bold uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#46f1c5]" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-[0.6rem] font-bold uppercase tracking-tighter">IPO</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#9fcaff] opacity-50" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[0.6rem] font-bold uppercase tracking-tighter">Stats</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#9fcaff] opacity-50" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[0.6rem] font-bold uppercase tracking-tighter">Config</span>
+</a>
+</nav>
+</body></html>

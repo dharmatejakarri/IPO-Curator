@@ -1,0 +1,333 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+  .root { padding: 1.5rem 0; }
+  .phase-nav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
+  .phase-btn {
+    padding: 6px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary);
+    background: var(--color-background-secondary); color: var(--color-text-secondary);
+    font-size: 12px; cursor: pointer; transition: all .18s;
+  }
+  .phase-btn.active { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); font-weight: 500; }
+  .phase-btn:hover:not(.active) { background: var(--color-background-tertiary); color: var(--color-text-primary); }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .section-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 10px; }
+  .desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 14px; }
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .tool-card {
+    background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 10px; padding: 12px 14px;
+  }
+  .tool-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .tool-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+  .badge-free { background: var(--color-background-success); color: var(--color-text-success); }
+  .badge-best { background: var(--color-background-info); color: var(--color-text-info); }
+  .badge-warn { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .tool-why { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .vs-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px; }
+  .vs-table th { background: var(--color-background-secondary); padding: 7px 10px; text-align: left; color: var(--color-text-secondary); font-weight: 500; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .vs-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); vertical-align: top; }
+  .vs-table tr:last-child td { border-bottom: none; }
+  .tick { color: var(--color-text-success); font-size: 14px; }
+  .cross { color: var(--color-text-danger); font-size: 14px; }
+  .step-list { list-style: none; }
+  .step-list li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 13px; color: var(--color-text-secondary); align-items: flex-start; }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num { min-width: 22px; height: 22px; border-radius: 50%; background: var(--color-background-info); color: var(--color-text-info); font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .step-main { font-weight: 500; color: var(--color-text-primary); display: block; margin-bottom: 2px; }
+  .highlight-box { background: var(--color-background-secondary); border-left: 2px solid var(--color-border-info); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 12px; font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+  .arch-label { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 14px 0 6px; }
+  .flow-row { display: flex; align-items: center; gap: 0; flex-wrap: wrap; margin-bottom: 10px; }
+  .flow-box {
+    background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary);
+    border-radius: 8px; padding: 6px 12px; font-size: 12px; color: var(--color-text-primary);
+    text-align: center; min-width: 90px;
+  }
+  .flow-box.accent { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); }
+  .flow-box.accent2 { background: var(--color-background-success); color: var(--color-text-success); border-color: var(--color-border-success); }
+  .arrow { font-size: 14px; color: var(--color-text-tertiary); padding: 0 4px; }
+  .week-row { display: grid; grid-template-columns: 80px 1fr; gap: 10px; margin-bottom: 8px; align-items: start; }
+  .week-label { font-size: 11px; color: var(--color-text-tertiary); font-weight: 500; padding-top: 2px; }
+  .week-bar-wrap { background: var(--color-background-secondary); border-radius: 6px; padding: 6px 10px; font-size: 12px; color: var(--color-text-secondary); }
+  .week-title { font-weight: 500; color: var(--color-text-primary); font-size: 12px; }
+  .recruiter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .r-card { background: var(--color-background-secondary); border-radius: 8px; padding: 10px 12px; }
+  .r-title { font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .r-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+</style>
+
+<div class="root">
+  <div class="phase-nav">
+    <button class="phase-btn active" onclick="show('idea')">1. Project Vision</button>
+    <button class="phase-btn" onclick="show('stack')">2. Tech Stack</button>
+    <button class="phase-btn" onclick="show('arch')">3. Architecture</button>
+    <button class="phase-btn" onclick="show('data')">4. Data Sources</button>
+    <button class="phase-btn" onclick="show('sdlc')">5. SDLC Phases</button>
+    <button class="phase-btn" onclick="show('deploy')">6. Deployment</button>
+    <button class="phase-btn" onclick="show('recruit')">7. Recruiter Impact</button>
+  </div>
+
+  <!-- PANEL 1: IDEA -->
+  <div class="panel active" id="panel-idea">
+    <p class="section-title">What you're building</p>
+    <div class="highlight-box">
+      An AI-powered, RAG-based IPO analysis platform that ingests historical + upcoming IPO data from sources like Groww, NSE, and BSE — and delivers unbiased, AI-generated summaries, risk scores, and smart nudges for each IPO. Zero cost. Fully deployed. End-to-end.
+    </div>
+    <p class="section-title">Core features (from your notes)</p>
+    <ul class="step-list">
+      <li><span class="step-num">1</span><div><span class="step-main">RAG-based IPO Analysis Engine</span>Feed IPO prospectuses, company data, GMP data, financial context into a vector DB. LLM retrieves and reasons over it to generate summaries.</div></li>
+      <li><span class="step-num">2</span><div><span class="step-main">Agentic Suggestions (Nudges)</span>An AI agent that cross-references current macro context, sector trends, and past IPO performance to produce actionable IPO recommendations.</div></li>
+      <li><span class="step-num">3</span><div><span class="step-main">Historical + Upcoming IPO Database</span>Data pipeline that auto-scrapes/fetches IPO data from Groww, NSE, IPO Alerts API, and stores it in Supabase/Neon.</div></li>
+      <li><span class="step-num">4</span><div><span class="step-main">User Registration + Lead Capture</span>Simple email sign-up, saved watchlist, newsletter nudges — stored in your free-tier PostgreSQL database.</div></li>
+      <li><span class="step-num">5</span><div><span class="step-main">Live Web App (Public URL)</span>Fully deployed, shareable link to show recruiters. Clean, professional UI.</div></li>
+    </ul>
+  </div>
+
+  <!-- PANEL 2: STACK -->
+  <div class="panel" id="panel-stack">
+    <p class="section-title">Recommended zero-cost tech stack</p>
+    <p class="desc">Every tool below has a genuinely free tier suitable for a portfolio project. No credit card traps.</p>
+
+    <p class="arch-label">Frontend</p>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Next.js 14 (App Router)</span><span class="badge badge-best">Top pick</span></div>
+        <div class="tool-why">React-based, full-stack, SSR + API routes in one repo. Vercel deploys it for free with zero config. This is the #1 framework recruiters recognize.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Tailwind CSS + shadcn/ui</span><span class="badge badge-free">Free</span></div>
+        <div class="tool-why">Production-quality UI with minimal effort. shadcn components are copy-paste, zero dependencies. Looks impressive in demos.</div>
+      </div>
+    </div>
+
+    <p class="arch-label">Backend / API</p>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">FastAPI (Python)</span><span class="badge badge-best">Top pick</span></div>
+        <div class="tool-why">The de-facto standard for AI/ML backends. Async, typed, auto-generates Swagger docs. Recruiters in the AI/ML space expect this. Run on Render free tier.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">LangChain / LangGraph</span><span class="badge badge-free">Free</span></div>
+        <div class="tool-why">Industry-standard RAG + agentic framework. LangGraph adds the "agentic" layer — multi-step reasoning, tool calling. This alone impresses interviewers.</div>
+      </div>
+    </div>
+
+    <p class="arch-label">LLM (free tier)</p>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Google Gemini 2.5 Flash</span><span class="badge badge-best">Primary</span></div>
+        <div class="tool-why">1,000 requests/day free. 1M token context window. No credit card needed via AI Studio. Fastest free LLM for RAG analysis.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Groq (Llama 3.3 70B)</span><span class="badge badge-free">Fallback</span></div>
+        <div class="tool-why">300+ tokens/sec. Blazing fast. Use for real-time analysis views where speed matters. Free tier is generous for demo traffic.</div>
+      </div>
+    </div>
+
+    <p class="arch-label">Vector Database (RAG)</p>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Chroma DB (local/self-hosted)</span><span class="badge badge-best">Top pick</span></div>
+        <div class="tool-why">100% free, open-source, runs in-process with Python. Zero infra setup. Perfect for portfolio — and you can swap to Pinecone/Qdrant later.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Pinecone (free tier)</span><span class="badge badge-free">Alternative</span></div>
+        <div class="tool-why">Managed, cloud-hosted. 1 free index, 100K vectors. Good for showing "production-grade" tooling to recruiters. Start here if you want zero ops.</div>
+      </div>
+    </div>
+
+    <p class="arch-label">Database (user data + IPO store)</p>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Supabase</span><span class="badge badge-best">Top pick</span></div>
+        <div class="tool-why">Free PostgreSQL + auth + REST API + realtime. Open-source Firebase alternative. 500MB storage, 2 projects free. Perfect for user capture + IPO data table.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Neon (serverless Postgres)</span><span class="badge badge-free">Alternative</span></div>
+        <div class="tool-why">Serverless Postgres, scales to zero (no idle charges). 0.5 GB storage free. Great if you're already using Render for the backend.</div>
+      </div>
+    </div>
+
+    <p class="arch-label">Embeddings (free)</p>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">sentence-transformers (HuggingFace)</span><span class="badge badge-best">Top pick</span></div>
+        <div class="tool-why">all-MiniLM-L6-v2 runs locally, zero API cost, fast. Generate embeddings for IPO documents yourself. No rate limits ever.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-name">Gemini Embedding API</span><span class="badge badge-free">Alternative</span></div>
+        <div class="tool-why">text-embedding-004, 1500 RPD free. Slightly better quality than MiniLM. Use if you prefer API-based over local model.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 3: ARCH -->
+  <div class="panel" id="panel-arch">
+    <p class="section-title">System architecture — how data flows</p>
+    <p class="desc">Two flows: data ingestion (automated) and query/analysis (user-triggered).</p>
+
+    <p class="arch-label">Data ingestion pipeline (background job)</p>
+    <div class="flow-row">
+      <div class="flow-box">Groww / NSE<br><span style="font-size:10px;opacity:.6">scraper/API</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">Python<br><span style="font-size:10px;opacity:.6">data cleaner</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box accent">Supabase<br><span style="font-size:10px;opacity:.6">structured store</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">Chunker<br><span style="font-size:10px;opacity:.6">LangChain</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">Embeddings<br><span style="font-size:10px;opacity:.6">MiniLM</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box accent2">ChromaDB<br><span style="font-size:10px;opacity:.6">vector store</span></div>
+    </div>
+
+    <p class="arch-label">User query → AI analysis flow</p>
+    <div class="flow-row">
+      <div class="flow-box">User query<br><span style="font-size:10px;opacity:.6">Next.js UI</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">FastAPI<br><span style="font-size:10px;opacity:.6">backend</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">LangChain RAG<br><span style="font-size:10px;opacity:.6">retriever</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box accent2">ChromaDB<br><span style="font-size:10px;opacity:.6">top-k docs</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box accent">Gemini Flash<br><span style="font-size:10px;opacity:.6">LLM</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">Summary<br><span style="font-size:10px;opacity:.6">streamed back</span></div>
+    </div>
+
+    <p class="arch-label">Agentic nudge flow (LangGraph)</p>
+    <div class="flow-row">
+      <div class="flow-box accent">LangGraph agent<br><span style="font-size:10px;opacity:.6">multi-step</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">Tool: fetch macro<br><span style="font-size:10px;opacity:.6">GDP, interest rates</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">Tool: sector comps<br><span style="font-size:10px;opacity:.6">from vector DB</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box">Tool: GMP data<br><span style="font-size:10px;opacity:.6">grey market price</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box accent2">Final nudge<br><span style="font-size:10px;opacity:.6">risk + verdict</span></div>
+    </div>
+
+    <p class="arch-label">Full stack layer view</p>
+    <table class="vs-table">
+      <thead><tr><th>Layer</th><th>Technology</th><th>Hosted on</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Frontend</td><td>Next.js 14 + Tailwind + shadcn</td><td>Vercel</td><td>Free</td></tr>
+        <tr><td>Backend API</td><td>FastAPI + LangChain/LangGraph</td><td>Render (free instance)</td><td>Free</td></tr>
+        <tr><td>LLM</td><td>Gemini 2.5 Flash + Groq fallback</td><td>Cloud API</td><td>Free tier</td></tr>
+        <tr><td>Vector DB</td><td>ChromaDB (persistent)</td><td>Render disk</td><td>Free</td></tr>
+        <tr><td>Database</td><td>Supabase PostgreSQL</td><td>Supabase cloud</td><td>Free</td></tr>
+        <tr><td>Auth + Leads</td><td>Supabase Auth</td><td>Supabase cloud</td><td>Free</td></tr>
+        <tr><td>Scheduler</td><td>APScheduler (Python cron)</td><td>Render background worker</td><td>Free</td></tr>
+        <tr><td>CI/CD</td><td>GitHub Actions</td><td>GitHub</td><td>Free</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PANEL 4: DATA -->
+  <div class="panel" id="panel-data">
+    <p class="section-title">IPO data sources — what actually works</p>
+    <p class="desc">Reality check: most "free" Indian market APIs are scraper-based or have limits. Here's what's reliable:</p>
+
+    <table class="vs-table">
+      <thead><tr><th>Source</th><th>What you get</th><th>Free?</th><th>How to use</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ipoalerts.in API</strong></td><td>NSE/BSE IPO list, GMP data, dates, subscription status</td><td><span class="tick">✓</span> Yes</td><td>REST API + SDK, 2-minute integration, no API key</td></tr>
+        <tr><td><strong>Finnhub (IPO Calendar)</strong></td><td>Global IPO calendar, financials, basic IPO data</td><td><span class="tick">✓</span> Free tier</td><td>Free API key, 60 calls/min</td></tr>
+        <tr><td><strong>NSE India (direct scrape)</strong></td><td>Official IPO docs, DRHP PDFs, allotment data</td><td><span class="tick">✓</span> Public</td><td>Python BeautifulSoup/Playwright scraper</td></tr>
+        <tr><td><strong>Groww / Zerodha web</strong></td><td>Retail-friendly IPO summaries + GMP</td><td><span class="tick">✓</span> Scrape</td><td>Playwright headless browser, respect rate limits</td></tr>
+        <tr><td><strong>Yahoo Finance (yfinance)</strong></td><td>Post-listing price data, PE ratio, market cap</td><td><span class="tick">✓</span> Yes</td><td>yfinance Python library, no key needed</td></tr>
+        <tr><td><strong>SEBI EDGAR-equivalent</strong></td><td>DRHP/RHP PDFs (IPO prospectus docs)</td><td><span class="tick">✓</span> Public</td><td>Download PDFs → chunk → embed → RAG gold mine</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box">
+      <strong>Recruiter WOW factor:</strong> Loading DRHP (draft red herring prospectus) PDFs into your RAG pipeline and letting users ask "what are the key risks of this IPO?" — that is extremely impressive. No existing retail tool does this clearly.
+    </div>
+  </div>
+
+  <!-- PANEL 5: SDLC -->
+  <div class="panel" id="panel-sdlc">
+    <p class="section-title">Full SDLC — realistic 8-week build plan</p>
+    <p class="desc">Each phase is self-contained. You can pause after any phase and still have something demo-able.</p>
+
+    <div class="week-row"><div class="week-label">Week 1</div><div class="week-bar-wrap"><span class="week-title">Requirements + Design</span><br>Define user stories, sketch UI wireframes (Excalidraw), set up GitHub repo, create Supabase project, list all IPO data fields needed.</div></div>
+    <div class="week-row"><div class="week-label">Week 2</div><div class="week-bar-wrap"><span class="week-title">Data Pipeline</span><br>Write Python scrapers for NSE/ipoalerts.in/Groww. Store to Supabase. Download 20-30 IPO PDFs (DRHP). Schedule daily cron with APScheduler.</div></div>
+    <div class="week-row"><div class="week-label">Week 3</div><div class="week-bar-wrap"><span class="week-title">RAG Core (Backend)</span><br>FastAPI setup. LangChain document loader for PDFs + structured data. MiniLM embeddings. ChromaDB vector store. Basic Q&A endpoint working locally.</div></div>
+    <div class="week-row"><div class="week-label">Week 4</div><div class="week-bar-wrap"><span class="week-title">LLM Integration + Prompting</span><br>Connect Gemini Flash. Write system prompts for IPO summary, risk analysis, subscription recommendation. Test output quality. Add Groq fallback.</div></div>
+    <div class="week-row"><div class="week-label">Week 5</div><div class="week-bar-wrap"><span class="week-title">Agentic Layer (LangGraph)</span><br>Build multi-step agent: fetch macro context → retrieve sector comps → cross-reference GMP → generate nudge. This is the "agentic framework" from your notes.</div></div>
+    <div class="week-row"><div class="week-label">Week 6</div><div class="week-bar-wrap"><span class="week-title">Frontend (Next.js)</span><br>Build IPO listing page, individual IPO analysis page, AI chat interface, user sign-up (Supabase Auth). Tailwind + shadcn for polish.</div></div>
+    <div class="week-row"><div class="week-label">Week 7</div><div class="week-bar-wrap"><span class="week-title">Deployment + Integration</span><br>Deploy FastAPI to Render. Deploy Next.js to Vercel. Connect env variables. Test full flow end-to-end. Fix cold start issues on Render free tier.</div></div>
+    <div class="week-row"><div class="week-label">Week 8</div><div class="week-bar-wrap"><span class="week-title">Polish + Recruiter Packaging</span><br>Add README with architecture diagram. Record Loom demo video. Write a 500-word Medium/dev.to article about the project. Add to GitHub portfolio.</div></div>
+  </div>
+
+  <!-- PANEL 6: DEPLOY -->
+  <div class="panel" id="panel-deploy">
+    <p class="section-title">Deployment — what actually works at zero cost</p>
+    <p class="desc">Key reality: Render free tier sleeps after 15 min of inactivity (cold start ~30s). Use UptimeRobot (free) to ping it every 10 min and keep it warm during demo hours.</p>
+
+    <table class="vs-table">
+      <thead><tr><th>Platform</th><th>What to host</th><th>Free limits</th><th>Gotchas</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Vercel</strong></td><td>Next.js frontend</td><td>100GB bandwidth, unlimited deploys</td><td>API routes have 10s timeout on free tier — use FastAPI for long AI calls</td></tr>
+        <tr><td><strong>Render</strong></td><td>FastAPI backend + ChromaDB</td><td>750 hrs/mo, 512MB RAM</td><td>Sleeps on inactivity — ping with UptimeRobot</td></tr>
+        <tr><td><strong>Supabase</strong></td><td>PostgreSQL + Auth</td><td>500MB DB, 50k monthly active users</td><td>Projects pause after 1 week of inactivity on free tier — set wake-up pings</td></tr>
+        <tr><td><strong>GitHub Actions</strong></td><td>CI/CD pipeline</td><td>2000 min/month</td><td>None for small project</td></tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <strong>Pro tip for interviews:</strong> Keep a "warm demo mode" — a pre-cached set of AI responses for the most popular IPOs so your app responds instantly even if the LLM API is slow. Shows production thinking.
+    </div>
+
+    <p class="section-title" style="margin-top:14px">CI/CD flow (GitHub Actions)</p>
+    <div class="flow-row" style="flex-wrap:wrap;gap:6px">
+      <div class="flow-box">Push to GitHub</div>
+      <span class="arrow">→</span>
+      <div class="flow-box">GitHub Actions<br><span style="font-size:10px;opacity:.6">run tests</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box accent">Vercel deploy<br><span style="font-size:10px;opacity:.6">frontend auto</span></div>
+      <span class="arrow">→</span>
+      <div class="flow-box accent2">Render deploy<br><span style="font-size:10px;opacity:.6">backend auto</span></div>
+    </div>
+  </div>
+
+  <!-- PANEL 7: RECRUITER -->
+  <div class="panel" id="panel-recruit">
+    <p class="section-title">Maximizing recruiter and interviewer impact</p>
+    <p class="desc">This project hits multiple top-demanded skill areas. Here's how to frame each one.</p>
+
+    <div class="recruiter-grid">
+      <div class="r-card"><div class="r-title">RAG Pipeline</div><div class="r-desc">You built a production RAG system: document ingestion, chunking strategy, vector embeddings, retrieval, LLM generation. This alone satisfies most AI engineer JD requirements.</div></div>
+      <div class="r-card"><div class="r-title">Agentic AI (LangGraph)</div><div class="r-desc">Multi-step reasoning agent with tools. This is the hottest skill in 2025-26 AI hiring. Most candidates only know chatbots. You built an agent.</div></div>
+      <div class="r-card"><div class="r-title">Full Stack (Next.js + FastAPI)</div><div class="r-desc">End-to-end ownership: frontend, backend, database, deployment. Shows you can ship, not just prototype.</div></div>
+      <div class="r-card"><div class="r-title">Data Engineering</div><div class="r-desc">You built a real data pipeline — scraping, cleaning, scheduling, storing. Not just "I used a dataset from Kaggle."</div></div>
+      <div class="r-card"><div class="r-title">Cloud + DevOps</div><div class="r-desc">GitHub Actions CI/CD, multi-service deployment (Vercel + Render + Supabase), environment management. Real-world deployment skills.</div></div>
+      <div class="r-card"><div class="r-title">Domain Knowledge (FinTech)</div><div class="r-desc">IPO analysis, GMP, subscription status, DRHP — you know the domain. FinTech, BFSI, and SaaS companies pay a premium for this.</div></div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:14px">
+      <strong>Interview script:</strong> "I built a zero-cost, end-to-end agentic RAG platform for IPO analysis. It ingests DRHP prospectus PDFs, scrapes live GMP and subscription data, embeds them into ChromaDB, and uses a LangGraph agent with Gemini Flash to generate unbiased IPO summaries and investment nudges. It's live at [your-url.vercel.app]."
+    </div>
+
+    <p class="section-title" style="margin-top:14px">What to add to GitHub README</p>
+    <ul class="step-list">
+      <li><span class="step-num">1</span><div><span class="step-main">Architecture diagram</span>System diagram showing all layers and data flow</div></li>
+      <li><span class="step-num">2</span><div><span class="step-main">Demo GIF / Loom video</span>30-second screencast showing real-time IPO analysis in action</div></li>
+      <li><span class="step-num">3</span><div><span class="step-main">Tech stack badge list</span>FastAPI, LangChain, LangGraph, ChromaDB, Gemini, Supabase, Next.js, Vercel, Render</div></li>
+      <li><span class="step-num">4</span><div><span class="step-main">Live link prominently</span>Put the Vercel URL in the very first line of README</div></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.phase-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>

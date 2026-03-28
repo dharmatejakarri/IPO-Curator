@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IPO Curator | Agentic RAG Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#00d4aa",
+              "error-container": "#93000a",
+              "on-surface-variant": "#bacac2",
+              "on-tertiary-fixed-variant": "#454747",
+              "on-secondary-container": "#002b4d",
+              "primary-fixed-dim": "#28dfb5",
+              "primary-fixed": "#55fcd0",
+              "background": "#131313",
+              "secondary-container": "#3a95e8",
+              "on-secondary-fixed": "#001d36",
+              "on-tertiary-container": "#4a4c4c",
+              "secondary-fixed-dim": "#9fcaff",
+              "tertiary": "#d7d8d8",
+              "surface-container-low": "#1c1b1b",
+              "surface-container": "#201f1f",
+              "on-error-container": "#ffdad6",
+              "inverse-surface": "#e5e2e1",
+              "surface": "#131313",
+              "secondary-fixed": "#d1e4ff",
+              "on-surface": "#e5e2e1",
+              "surface-bright": "#3a3939",
+              "on-error": "#690005",
+              "error": "#ffb4ab",
+              "surface-dim": "#131313",
+              "on-primary-fixed": "#002118",
+              "surface-variant": "#353534",
+              "primary": "#46f1c5",
+              "on-tertiary-fixed": "#1a1c1c",
+              "on-secondary": "#003258",
+              "on-background": "#e5e2e1",
+              "inverse-on-surface": "#313030",
+              "on-primary": "#00382b",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "secondary": "#9fcaff",
+              "on-secondary-fixed-variant": "#00497d",
+              "on-tertiary": "#2f3131",
+              "surface-container-high": "#2a2a2a",
+              "on-primary-fixed-variant": "#00513f",
+              "outline": "#85948d",
+              "surface-container-lowest": "#0e0e0e",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-container-highest": "#353534",
+              "surface-tint": "#28dfb5",
+              "tertiary-container": "#bbbcbc",
+              "outline-variant": "#3b4a44",
+              "on-primary-container": "#005643",
+              "inverse-primary": "#006b55"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { background-color: #0e0e0e; color: #e5e2e1; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+      .bento-card:hover { transform: translateY(-4px); background-color: #353534; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+      .hero-glow { filter: drop-shadow(0 0 15px rgba(70, 241, 197, 0.3)); }
+      .blue-glow:hover { box-shadow: 0 0 30px rgba(159, 202, 255, 0.4); }
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation (Shell) -->
+<nav class="fixed top-0 right-0 left-0 h-20 z-50 glass-nav bg-[#131313]/60 flex justify-between items-center px-12 w-full">
+<div class="text-2xl font-black tracking-tighter text-white">IPO Curator</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="font-['Inter'] uppercase tracking-widest text-[10px] font-bold text-[#46f1c5]" href="#">Market</a>
+<a class="font-['Inter'] uppercase tracking-widest text-[10px] font-bold text-gray-400 hover:text-[#46f1c5] transition-colors duration-300" href="#">Watchlist</a>
+<a class="font-['Inter'] uppercase tracking-widest text-[10px] font-bold text-gray-400 hover:text-[#46f1c5] transition-colors duration-300" href="#">News</a>
+<div class="flex items-center space-x-6 ml-4">
+<span class="material-symbols-outlined text-gray-400 hover:text-white cursor-pointer">search</span>
+<span class="material-symbols-outlined text-gray-400 hover:text-white cursor-pointer">notifications</span>
+<button class="bg-primary px-6 py-2 rounded-full text-on-primary font-bold text-[10px] uppercase tracking-widest hover:opacity-90 transition-opacity">Subscribe</button>
+</div>
+</div>
+</nav>
+<!-- Side Navigation (Shell - Responsive Desktop Only) -->
+<aside class="hidden lg:flex flex-col h-screen w-20 hover:w-64 transition-all duration-300 fixed left-0 top-0 z-[55] border-r border-white/5 bg-[#0e0e0e] py-8 overflow-hidden group">
+<div class="px-6 mb-12">
+<div class="text-xl font-black tracking-tighter text-[#46f1c5]">IC</div>
+</div>
+<div class="flex flex-col space-y-2 flex-grow">
+<a class="flex items-center px-6 py-4 text-[#46f1c5] border-r-2 border-[#46f1c5] bg-gradient-to-r from-[#46f1c5]/10 to-transparent" href="#">
+<span class="material-symbols-outlined mr-4">dashboard</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-medium">Dashboard</span>
+</a>
+<a class="flex items-center px-6 py-4 text-gray-500 hover:text-white hover:bg-[#201f1f] transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4">calendar_today</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-medium">IPO Calendar</span>
+</a>
+<a class="flex items-center px-6 py-4 text-gray-500 hover:text-white hover:bg-[#201f1f] transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4">analytics</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-medium">Analysis</span>
+</a>
+<a class="flex items-center px-6 py-4 text-gray-500 hover:text-white hover:bg-[#201f1f] transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4">pie_chart</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-medium">Portfolio</span>
+</a>
+</div>
+<div class="px-6 mt-auto">
+<a class="flex items-center text-gray-500 hover:text-white py-4 transition-colors" href="#">
+<span class="material-symbols-outlined mr-4">settings</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity font-medium">Settings</span>
+</a>
+</div>
+</aside>
+<main class="lg:pl-20">
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-64 text-center">
+<div class="max-w-6xl mx-auto">
+<h1 class="text-white font-bold leading-tight tracking-tighter mb-12" style="font-size: clamp(3rem, 8vw, 80pt);">
+                    Analyze IPOs with AI Agents
+                </h1>
+<p class="text-secondary max-w-3xl mx-auto text-xl md:text-2xl font-light leading-relaxed mb-16 opacity-80">
+                    Agentic RAG framework delivers summaries, editable data, historical suggestions, and real-world adaptations for the modern investor.
+                </p>
+<div class="flex flex-col items-center gap-8">
+<button class="blue-glow h-20 px-12 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary text-xl font-bold transition-all duration-500 scale-100 hover:scale-105">
+                        Start Analysis
+                    </button>
+<p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Powered by LangGraph &amp; Streamlit</p>
+</div>
+</div>
+<div class="mt-32 w-full max-w-7xl mx-auto rounded-lg overflow-hidden surface-container border border-white/5 shadow-2xl">
+<img alt="Platform Preview" class="w-full h-auto object-cover opacity-80" data-alt="Modern dark dashboard interface showing stock market charts with neon teal lines and clean financial data points in a minimalist layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGTqlAYJXb99bPmjzzeQ-ZuYX3e2n16gq0vPRDL-cTUgerJ93tHlNaoqH4pJ5z9-VKL5PAgDv8SQpMsSPiar79ZDdE5M4pmvgWjQRDdVTqV2HiI16GOik2825WlPOB8uey4qzfGkGBXBp0y0wQnUBwWTRSIT9UPrsRI4MUEFsIB7liQeSB5piR1AEt2Fwaiyv4VyOf4zZgOzdJt_jbF72ZNtOkM10gLc0JEa1LHX-mnq3K5OFW9EsCeiABtFFqR7yVFj4hm7A0nS1L"/>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-32 px-12 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- AI Summaries -->
+<div class="bento-card md:col-span-2 md:row-span-2 bg-surface-container p-12 rounded-lg flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-6">analytics</span>
+<h3 class="text-3xl font-bold mb-4 text-white">AI Summaries</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">Instant distillation of S-1 filings using multi-agent reasoning paths. Get to the truth behind the prospectus in seconds.</p>
+</div>
+<div class="mt-8 bg-surface-container-lowest p-6 rounded-lg">
+<div class="h-1 w-full bg-white/5 rounded-full mb-2 overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+<p class="text-[10px] text-primary uppercase font-bold">Processing Risk Analysis...</p>
+</div>
+</div>
+<!-- Historical Suggestions -->
+<div class="bento-card bg-surface-container p-10 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-3xl mb-6">timeline</span>
+<h3 class="text-xl font-bold mb-2 text-white">Historical Suggestions</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Cross-reference current listings with performance data from 5,000+ past public offerings.</p>
+</div>
+<!-- Real-World Scenarios -->
+<div class="bento-card bg-surface-container p-10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl mb-6">public</span>
+<h3 class="text-xl font-bold mb-2 text-white">Real-World Scenarios</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Stress test IPO valuations against geopolitical shifts and market volatility simulations.</p>
+</div>
+<!-- Data Growth -->
+<div class="bento-card md:col-span-2 bg-surface-container p-10 rounded-lg flex items-center gap-8">
+<div class="flex-grow">
+<h3 class="text-xl font-bold mb-2 text-white">Data Growth</h3>
+<p class="text-on-surface-variant text-sm">Automated ingestion of real-time SEC EDGAR feeds and market sentiment analysis.</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-5xl">database</span>
+</div>
+<!-- User Editable -->
+<div class="bento-card bg-surface-container p-10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl mb-6">edit_note</span>
+<h3 class="text-xl font-bold mb-2 text-white">User Editable</h3>
+<p class="text-on-surface-variant text-sm">Correct the AI, override assumptions, and customize your personal analysis framework.</p>
+</div>
+<!-- Free & Fast -->
+<div class="bento-card bg-surface-container p-10 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-3xl mb-6">rocket_launch</span>
+<h3 class="text-xl font-bold mb-2 text-white">Free &amp; Fast</h3>
+<p class="text-on-surface-variant text-sm">Enterprise-grade RAG infrastructure delivered via high-speed serverless deployment.</p>
+</div>
+</div>
+</section>
+<!-- Product Section: Apple-style Stacked Cards -->
+<section class="py-64 px-12 bg-surface-container-lowest">
+<div class="max-w-4xl mx-auto space-y-32">
+<!-- IPO Explorer -->
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000"></div>
+<div class="relative bg-surface p-16 rounded-lg border border-white/5 flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1">
+<h2 class="text-4xl font-black mb-6 text-white tracking-tighter">IPO Explorer</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">Navigate the upcoming market landscape with a unified feed of upcoming, active, and recently closed offerings.</p>
+</div>
+<div class="w-full md:w-1/2 aspect-video bg-surface-container-high rounded-lg overflow-hidden border border-white/5">
+<img alt="Explorer View" class="w-full h-full object-cover" data-alt="Macro view of a screen displaying complex stock market candlestick charts and digital trading data in soft blue and white hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX-w9KMHLkga7tHqyHefER8A-rAyuGhGdOUQGxu82p3ZLKNOL4FZnbEEoU2zZkLQgjKqbQGKECOvp3Q60RiGEL7O7KFHNIXyyrRzf5f3nJjIBrHSFQP3CDkiruDKyVgV-t5MvDmk1c8RCW3iztYDKVcn8b2Zqx-Ijh2Tjz9LHDMPh1vpemLBjyynstVmWQjx33Uj4O69aUM7LP6oB4qW82q_iQbZ0NGrs_7SEzHOnIw_dEi2EtDZyNo2Pcq9jmUdkek80Alb22XhMd"/>
+</div>
+</div>
+</div>
+<!-- Agent Dashboard -->
+<div class="relative group">
+<div class="relative bg-surface p-16 rounded-lg border border-white/5 flex flex-col md:flex-row-reverse items-center gap-16">
+<div class="flex-1">
+<h2 class="text-4xl font-black mb-6 text-white tracking-tighter">Agent Dashboard</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">Monitor your fleet of AI agents as they scrub news, filings, and social sentiment to deliver you an information edge.</p>
+</div>
+<div class="w-full md:w-1/2 aspect-video bg-surface-container-high rounded-lg overflow-hidden border border-white/5">
+<img alt="Dashboard View" class="w-full h-full object-cover" data-alt="Highly detailed computer server room with glowing blue status lights, representing high-performance AI processing and data agents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj6-dT1FUv6PPppVqCK7UFqYma-xqzzsHOap4xRaT8e2bAkGhoB7tqRo3hC0V-7e5hbrdslLCkeunoY4kX3RKr97k4X7v0WTFUG9dvIgrS1k6H3McgIeVyuhqEwfc6TcyRxBWt_KXrYUqDV7yXVOWIpWKH6-TReurVLMyJFCOl7b5HazOiYksIWBlDln5wPlm4gXyuMCbUwG6iWovGrQTG_cL3oOauGPRrbA4Ydm-FGzNjIAsiMcR949-eegyehJz1lK7fx-PyTBAw"/>
+</div>
+</div>
+</div>
+<!-- Insights Feed -->
+<div class="relative group">
+<div class="relative bg-surface p-16 rounded-lg border border-white/5 flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1">
+<h2 class="text-4xl font-black mb-6 text-white tracking-tighter">Insights Feed</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">A curated editorial stream of the most significant shifts in IPO valuations and market expectations.</p>
+</div>
+<div class="w-full md:w-1/2 aspect-video bg-surface-container-high rounded-lg overflow-hidden border border-white/5">
+<img alt="Insights Feed" class="w-full h-full object-cover" data-alt="A premium tablet showing financial news headlines and stock market trends on a dark, minimalist interface with elegant typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7sFLOevOFnZ5ddPJZueZwMLKkbOl3GBYx17ajBCIyevkO4BX2BXjcoExFkQAkLVFcZr7_sxGicWzk6jEgJvdzoDehxlRWmk4wbedC23GNxqQxZsM0FsdIlSa9KSnjMdBoXd6J4IXd2863qmcJeM6MVYunEAxZWtmkMntOyPoTeOGWnyR9gDFlF9MkOYD_V_bsBEU2_ytv3c8QSeSZrPK-hwtIkf3B2F839ZhwmQ25SH6xTiQN3fvD1wEDVs8yObdqYjoyuTGZc71r"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-64 text-center px-12">
+<h2 class="text-white font-bold tracking-tighter mb-12" style="font-size: clamp(2rem, 5vw, 60pt);">
+                Ready for the Next Big Offering?
+            </h2>
+<button class="blue-glow h-20 px-16 rounded-full bg-white text-black text-xl font-bold hover:bg-primary hover:text-on-primary transition-all duration-300">
+                Launch Curator
+            </button>
+</section>
+<!-- Footer -->
+<footer class="py-24 border-t border-white/5 px-12 flex flex-col md:flex-row justify-between items-center gap-12 text-gray-500">
+<div class="text-xl font-black tracking-tighter text-white">IPO Curator</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<p class="text-xs font-medium tracking-widest uppercase">Powered by LangGraph &amp; Streamlit</p>
+<p class="text-[10px] opacity-50">© 2024 Financial Curator Technologies. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">API</a>
+</div>
+</footer>
+</main>
+</body></html>

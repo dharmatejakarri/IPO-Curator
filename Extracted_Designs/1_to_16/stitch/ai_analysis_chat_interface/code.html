@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IPO Curator | AI Analyst Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #e5e2e1;
+            margin: 0;
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #353534;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "tertiary-fixed-dim": "#c6c6c7",
+                "on-error-container": "#ffdad6",
+                "surface-container-low": "#1c1b1b",
+                "surface-container-highest": "#353534",
+                "outline": "#85948d",
+                "on-tertiary": "#2f3131",
+                "tertiary-container": "#bbbcbc",
+                "surface-container-lowest": "#0e0e0e",
+                "primary-fixed-dim": "#28dfb5",
+                "inverse-primary": "#006b55",
+                "on-tertiary-container": "#4a4c4c",
+                "on-surface": "#e5e2e1",
+                "on-secondary-fixed": "#001d36",
+                "secondary": "#9fcaff",
+                "on-primary-fixed": "#002118",
+                "surface-container": "#201f1f",
+                "tertiary-fixed": "#e2e2e2",
+                "inverse-surface": "#e5e2e1",
+                "on-secondary-fixed-variant": "#00497d",
+                "primary-container": "#00d4aa",
+                "surface-dim": "#131313",
+                "on-primary": "#00382b",
+                "secondary-fixed": "#d1e4ff",
+                "background": "#131313",
+                "surface": "#131313",
+                "on-secondary-container": "#002b4d",
+                "on-tertiary-fixed-variant": "#454747",
+                "on-primary-fixed-variant": "#00513f",
+                "primary-fixed": "#55fcd0",
+                "outline-variant": "#3b4a44",
+                "surface-container-high": "#2a2a2a",
+                "surface-variant": "#353534",
+                "surface-tint": "#28dfb5",
+                "on-background": "#e5e2e1",
+                "tertiary": "#d7d8d8",
+                "error": "#ffb4ab",
+                "on-error": "#690005",
+                "on-primary-container": "#005643",
+                "primary": "#46f1c5",
+                "on-secondary": "#003258",
+                "secondary-fixed-dim": "#9fcaff",
+                "inverse-on-surface": "#313030",
+                "on-tertiary-fixed": "#1a1c1c",
+                "error-container": "#93000a",
+                "surface-bright": "#3a3939",
+                "on-surface-variant": "#bacac2",
+                "secondary-container": "#3a95e8"
+              },
+              fontFamily: {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-black text-on-surface">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar: Analyst Core (Shared Component Logic) -->
+<aside class="hidden md:flex flex-col w-80 bg-[#0e0e0e] border-r border-zinc-800/30 h-screen p-6 space-y-8">
+<!-- Header Section -->
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="AI Analyst Bot" class="w-8 h-8" data-alt="minimalist geometric robot avatar with soft teal accents representing an advanced financial artificial intelligence" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS6meZVG3Ak7wWdfGOtmYn6UuItL4Uh12kH3sMjn76hRE7IzULzzyq3FQX3Lx59dsolFA8L9cID1yIxFfKcQSDL0AgU2xQ_RK1nIPJD2qrBFFSPNF-tbxWuxfS-BfWV5eGiSOMFzkxgw-tgWu-Wy3yIxutl7FS9XfrAKdXH9ugk9Jew0HF335ANKZ8msD-TruqA6Z3XObtnr_-MaVX8OJIh44d6ftoNdwWMSnKcY_qFkJJR1L3wzJ2iriY1X6RYdRTW8vfpmjxkqjS"/>
+</div>
+<div>
+<h2 class="text-lg font-bold text-zinc-100 tracking-tight">Analyst Core</h2>
+<p class="text-[10px] text-primary uppercase tracking-[0.2em] font-medium">v2.4 active</p>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full h-12 bg-zinc-800/50 hover:bg-zinc-800/80 text-primary border border-primary/20 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Analysis
+            </button>
+<!-- Navigation Links -->
+<nav class="flex-1 space-y-2 overflow-y-auto custom-scrollbar">
+<p class="text-[10px] text-zinc-500 uppercase tracking-widest px-2 mb-4">Recent Intel</p>
+<a class="flex items-center gap-3 px-3 py-3 bg-zinc-800/50 text-primary rounded-xl font-medium transition-all duration-200 translate-x-1" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-sm truncate">Databricks S-1 Review</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800/30 rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span>
+<span class="text-sm truncate">Stripe Valuation Model</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800/30 rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="analytics">analytics</span>
+<span class="text-sm truncate">Reddit Growth Thesis</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800/30 rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="bookmark">bookmark</span>
+<span class="text-sm truncate">Saved Insights</span>
+</a>
+</nav>
+<!-- Footer Tabs -->
+<div class="pt-6 border-t border-zinc-800/30 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-zinc-500 hover:text-zinc-300 text-xs" href="#">
+<span class="material-symbols-outlined text-base" data-icon="description">description</span>
+                    Documentation
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-zinc-500 hover:text-zinc-300 text-xs" href="#">
+<span class="material-symbols-outlined text-base" data-icon="help">help</span>
+                    Support
+                </a>
+</div>
+</aside>
+<!-- Main Workspace: 9 Columns -->
+<main class="flex-1 flex flex-col bg-black relative">
+<!-- Top Header -->
+<header class="h-20 flex items-center justify-between px-10 border-b border-zinc-800/20 bg-black/40 backdrop-blur-xl z-10">
+<div class="flex items-center gap-4">
+<h1 class="text-2xl font-black tracking-tighter text-zinc-100 uppercase">IPO Analyst Bot</h1>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase">Live</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-8 text-sm font-medium">
+<a class="text-zinc-400 hover:text-primary transition-colors" href="#">Analysis</a>
+<a class="text-zinc-400 hover:text-primary transition-colors" href="#">Market</a>
+<a class="text-zinc-400 hover:text-primary transition-colors" href="#">Insights</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-zinc-400 hover:text-zinc-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Chat Content Area -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-10 space-y-12 max-w-6xl mx-auto w-full">
+<!-- Initial Message -->
+<div class="flex justify-start">
+<div class="max-w-[85%] space-y-4">
+<div class="bg-surface-container rounded-2xl p-6 border border-zinc-800/50">
+<p class="text-lg leading-relaxed text-zinc-300">
+                                I've finished analyzing the <span class="text-primary font-semibold">Databricks S-1 filing</span>. The growth trajectory remains robust with a 42% YoY revenue increase, though R&amp;D spend is significantly higher than peers.
+                            </p>
+</div>
+<span class="text-[10px] text-zinc-600 uppercase tracking-widest ml-2">Analyst Bot • 09:41 AM</span>
+</div>
+</div>
+<!-- Bento Response: Executive Summary -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<div class="col-span-12 lg:col-span-8 bg-surface-container rounded-lg p-10 border border-zinc-800/30">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold tracking-tight text-zinc-100">Executive Summary</h3>
+<span class="px-3 py-1 bg-primary/5 text-primary text-[10px] font-bold rounded-full border border-primary/10 tracking-widest uppercase">Proprietary Insight</span>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-2 gap-8">
+<div>
+<p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Target Valuation</p>
+<p class="text-3xl font-black text-zinc-100">$43B - $48B</p>
+</div>
+<div>
+<p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Implied Multiple</p>
+<p class="text-3xl font-black text-zinc-100">14.2x EV/Rev</p>
+</div>
+</div>
+<p class="text-zinc-400 leading-relaxed text-lg font-light">
+                                Databricks' Lakehouse architecture has created a defensive moat in the AI data layer. Current institutional demand suggests a highly oversubscribed offering, potentially pricing above the initial range.
+                            </p>
+</div>
+</div>
+<!-- Small Bento Card: Momentum -->
+<div class="col-span-12 lg:col-span-4 h-full flex flex-col justify-between bg-primary/5 rounded-lg p-10 border border-primary/10">
+<div>
+<span class="material-symbols-outlined text-primary mb-4 text-4xl" data-icon="trending_up">trending_up</span>
+<h4 class="text-xl font-bold text-zinc-100 mb-2">Growth Sentiment</h4>
+<p class="text-sm text-zinc-400">Institutional sentiment is currently sitting at 'Aggressive' for the Cloud Data sector.</p>
+</div>
+<div class="mt-8 flex items-baseline gap-2">
+<span class="text-5xl font-black text-primary italic">A+</span>
+<span class="text-xs text-zinc-500 uppercase tracking-tighter">Market Grade</span>
+</div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex justify-end">
+<div class="max-w-[70%]">
+<div class="bg-primary text-black font-semibold rounded-2xl rounded-tr-none px-6 py-4 shadow-[0_10px_30px_rgba(70,241,197,0.15)]">
+                            Can you break down the specific risk factors identified in the 'Risks' section of the S-1? Focus on the competition.
+                        </div>
+</div>
+</div>
+<!-- Bento Response: Risk Matrix -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-12 bg-surface-container rounded-lg overflow-hidden border border-zinc-800/30">
+<div class="p-8 border-b border-zinc-800/30">
+<h3 class="text-xl font-bold text-zinc-100 tracking-tight">Competitive Risk Matrix</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-zinc-900/50">
+<th class="p-6 text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Risk Factor</th>
+<th class="p-6 text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Competitor</th>
+<th class="p-6 text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Severity</th>
+<th class="p-6 text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Strategic Mitigation</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-zinc-800/30">
+<tr class="hover:bg-zinc-800/20 transition-colors">
+<td class="p-6 text-sm font-medium text-zinc-200">Price Compression</td>
+<td class="p-6 text-sm text-zinc-400 italic">Snowflake (SNOW)</td>
+<td class="p-6">
+<span class="px-2 py-0.5 rounded text-[10px] bg-red-900/20 text-red-400 border border-red-900/40 uppercase tracking-tighter font-bold">Critical</span>
+</td>
+<td class="p-6 text-sm text-zinc-400">Bundling ML-lifecycle tools (MLFlow).</td>
+</tr>
+<tr class="hover:bg-zinc-800/20 transition-colors">
+<td class="p-6 text-sm font-medium text-zinc-200">Cloud Lock-in</td>
+<td class="p-6 text-sm text-zinc-400 italic">AWS / GCP / Azure</td>
+<td class="p-6">
+<span class="px-2 py-0.5 rounded text-[10px] bg-orange-900/20 text-orange-400 border border-orange-900/40 uppercase tracking-tighter font-bold">Moderate</span>
+</td>
+<td class="p-6 text-sm text-zinc-400">Multi-cloud native architecture.</td>
+</tr>
+<tr class="hover:bg-zinc-800/20 transition-colors">
+<td class="p-6 text-sm font-medium text-zinc-200">Open Source Cannibalization</td>
+<td class="p-6 text-sm text-zinc-400 italic">Apache Spark Comm.</td>
+<td class="p-6">
+<span class="px-2 py-0.5 rounded text-[10px] bg-blue-900/20 text-blue-400 border border-blue-900/40 uppercase tracking-tighter font-bold">Low</span>
+</td>
+<td class="p-6 text-sm text-zinc-400">Proprietary Delta Engine optimizations.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="h-32"></div> <!-- Spacer for footer -->
+</div>
+<!-- User Input Section -->
+<div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black via-black/90 to-transparent">
+<div class="max-w-4xl mx-auto flex items-center gap-4 bg-surface-container rounded-full p-2 pl-6 shadow-2xl border border-zinc-800/50">
+<button class="p-2 text-zinc-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="attach_file">attach_file</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-zinc-100 placeholder-zinc-600 py-3 text-sm" placeholder="Ask about S-1 financials, competitive risks, or market sentiment..." type="text"/>
+<button class="w-12 h-12 flex items-center justify-center bg-primary rounded-full text-black hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined font-bold" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</div>
+<div class="text-center mt-3">
+<p class="text-[10px] text-zinc-700 uppercase tracking-[0.3em] font-medium">Databricks S-1 Analysis • Proprietary Model Beta v4</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

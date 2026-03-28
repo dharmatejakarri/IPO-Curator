@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Curator | IPO Browse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#ffdad6",
+              "primary-fixed-dim": "#28dfb5",
+              "on-tertiary-fixed": "#1a1c1c",
+              "on-tertiary": "#2f3131",
+              "surface-container": "#201f1f",
+              "surface": "#131313",
+              "primary-container": "#00d4aa",
+              "secondary-container": "#3a95e8",
+              "tertiary": "#d7d8d8",
+              "surface-variant": "#353534",
+              "on-surface-variant": "#bacac2",
+              "secondary": "#9fcaff",
+              "surface-container-lowest": "#0e0e0e",
+              "primary": "#46f1c5",
+              "on-primary": "#00382b",
+              "on-tertiary-fixed-variant": "#454747",
+              "on-secondary-container": "#002b4d",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "surface-bright": "#3a3939",
+              "surface-dim": "#131313",
+              "inverse-on-surface": "#313030",
+              "surface-container-highest": "#353534",
+              "on-surface": "#e5e2e1",
+              "primary-fixed": "#55fcd0",
+              "on-primary-fixed-variant": "#00513f",
+              "on-primary-container": "#005643",
+              "on-error": "#690005",
+              "surface-container-high": "#2a2a2a",
+              "outline-variant": "#3b4a44",
+              "secondary-fixed-dim": "#9fcaff",
+              "on-primary-fixed": "#002118",
+              "error": "#ffb4ab",
+              "surface-tint": "#28dfb5",
+              "inverse-surface": "#e5e2e1",
+              "on-background": "#e5e2e1",
+              "outline": "#85948d",
+              "on-tertiary-container": "#4a4c4c",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-container-low": "#1c1b1b",
+              "background": "#131313",
+              "on-secondary-fixed": "#001d36",
+              "tertiary-container": "#bbbcbc",
+              "secondary-fixed": "#d1e4ff",
+              "on-secondary-fixed-variant": "#00497d",
+              "inverse-primary": "#006b55",
+              "on-secondary": "#003258",
+              "error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #131313;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-8 h-20 w-full">
+<div class="text-[#46f1c5] font-black tracking-widest text-lg uppercase">THE CURATOR</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#46f1c5] hover:opacity-80 transition-opacity active:scale-95 transition-all">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="professional headshot of a financial analyst in a dark suit with minimalist studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8pmzlGv5rob7fLvZnmfh-1M5_HL4_wDVUEYt61unZjXajwcR5DxCVrWEoISTbI21RYSflYhwpWII7f3XgJwo7YXyZNWb3EAcbIgq-f1FGCMqXU0hHCu-9Qvpk4yU3eLzE6uYM4kmcfytcOFeykfCj40bIzC-Cqa7zrlKJ7MvzoZrxh9k87QXWoyKoH3uw1W3QIAz0AeHswJG2yPwYm262u3tGYb87OngOBzD6YbhCXF4usTdNnweLhMjH3wIE-93vBaOE0xWH8SwM"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-lg mx-auto">
+<!-- Search & Filter Header -->
+<section class="mb-10">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-2xl py-4 pl-12 pr-12 text-on-surface focus:ring-1 focus:ring-primary/30 focus:bg-surface-container-high transition-all" placeholder="Search IPOs..." type="text"/>
+<button class="absolute inset-y-0 right-4 flex items-center">
+<span class="material-symbols-outlined text-primary">tune</span>
+</button>
+</div>
+<!-- Scrollable Chips -->
+<div class="flex gap-3 mt-6 overflow-x-auto hide-scrollbar pb-2">
+<button class="px-6 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 whitespace-nowrap text-xs font-bold uppercase tracking-widest">Currently Open</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-highest transition-colors whitespace-nowrap text-xs font-bold uppercase tracking-widest">Upcoming</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-highest transition-colors whitespace-nowrap text-xs font-bold uppercase tracking-widest">Recently Listed</button>
+</div>
+</section>
+<!-- IPO Vertical List -->
+<div class="space-y-6">
+<!-- Card 1 -->
+<div class="bg-surface-container rounded-lg p-6 flex flex-col gap-6 group hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-xl flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="minimalist tech company logo with geometric shapes and teal color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgRpsnoo2p2BGjaxiSqr-SIXTqG2c9qAJ6KpOWkE3CINRpu_68iVZkiQNlZUVoUsRZb0a-k3SjocXDjUGpla178RUK3FRMuAj4N6x0Ppnog-UPq7ZZ9xGjcFNYdmUhEHaE8JjOwLxIrT3EqXGizp-TwjUDgVvvrEQ8iofmP8jJdjjfjxSpYc6RR8UbWW226ySP528Tuwt5UVaBvSinG3-uxvXZTrilrHP1tzSVWh_OO8ZrW-VnUVRQEhHHllXgFALredxtx0EAY72s"/>
+</div>
+<div>
+<h3 class="text-xl font-bold tracking-tight text-on-surface">NeuralPath AI</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-primary/10 text-primary">Stable Growth</span>
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-secondary/10 text-secondary">Tech</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.1em]">Offer Price</span>
+<p class="text-lg font-black text-primary">$42.00 - $45.00</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant/10">
+<div>
+<span class="text-[10px] font-medium text-outline uppercase tracking-widest">Lot Size</span>
+<p class="text-sm font-semibold text-on-surface">300 Shares</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-medium text-outline uppercase tracking-widest">Issue Size</span>
+<p class="text-sm font-semibold text-on-surface">$1.2 Billion</p>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-sm uppercase tracking-widest shadow-[0_0_20px_rgba(70,241,197,0.2)] active:scale-95 transition-all">Analyze</button>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container rounded-lg p-6 flex flex-col gap-6 group hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-xl flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="clean vector logo of a sustainable energy company using green and blue shades" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuqbIseZMQ4-FxCFC9AVq302Xrnr6NbDTKnjisKFfLqehhr2y_UQm22tXxS5jzGRxxAOiO8qcBFRVK7VW0MmCSD9KUAkmRBv0HeP1xY--Q0xhwHdf5eldqGxOROWo4P7Pa9ddaITuAvbZeujWSM4Kd1qUckMlVjZ-VuDLl7SxO96UAfoAcTnDF87pBYoo_mZKlQ7Z_FA4zsBa9AcAc1dPBOTW3VUxpVZbJSGs2LcPIh-wHz0HFuMYZNbIvx8uMSSCZOY872S860zED"/>
+</div>
+<div>
+<h3 class="text-xl font-bold tracking-tight text-on-surface">EcoVolt Systems</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-error/10 text-error">High Risk</span>
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-secondary/10 text-secondary">Energy</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.1em]">Offer Price</span>
+<p class="text-lg font-black text-primary">$18.50 - $21.00</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant/10">
+<div>
+<span class="text-[10px] font-medium text-outline uppercase tracking-widest">Lot Size</span>
+<p class="text-sm font-semibold text-on-surface">1,000 Shares</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-medium text-outline uppercase tracking-widest">Issue Size</span>
+<p class="text-sm font-semibold text-on-surface">$450 Million</p>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl bg-surface-container-highest border border-outline-variant/20 text-on-surface font-bold text-sm uppercase tracking-widest active:scale-95 transition-all">Analyze</button>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container rounded-lg p-6 flex flex-col gap-6 group hover:bg-surface-container-high transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-xl flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="modern corporate logo for a global logistics firm with sharp angles and metallic finishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjw4kt7RiGXWtpqEuwljVVZcsiz4ZTgK3_5m2flppqsvbvKtKdNQhT50IfXdKUiD_tV-pw9FzY6JeelhT6xcXYZGiQMWIrIsgy4oFEqVYkc64CGwXRlnJrnhMlxR7pfDEUY1hSaB5wgIo93GLwZU3mnTaRKmTZIhoklvPTG5qjZxNT1E9O5_nlAxXPlfi5yZ2fCgxcFcHakxeorf_1mYasb5DnfFVuX6NDs_S7vPLx3yX3JnXye5nzViP0NsraIQmSaJdZUipE-63X"/>
+</div>
+<div>
+<h3 class="text-xl font-bold tracking-tight text-on-surface">GlobalShip Pro</h3>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-primary/10 text-primary">Stable Growth</span>
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-secondary/10 text-secondary">Logistics</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.1em]">Offer Price</span>
+<p class="text-lg font-black text-primary">$112.00 - $115.00</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant/10">
+<div>
+<span class="text-[10px] font-medium text-outline uppercase tracking-widest">Lot Size</span>
+<p class="text-sm font-semibold text-on-surface">50 Shares</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-medium text-outline uppercase tracking-widest">Issue Size</span>
+<p class="text-sm font-semibold text-on-surface">$2.8 Billion</p>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl bg-surface-container-highest border border-outline-variant/20 text-on-surface font-bold text-sm uppercase tracking-widest active:scale-95 transition-all">Analyze</button>
+</div>
+</div>
+<!-- Load More Section -->
+<div class="py-12 flex justify-center">
+<button class="flex items-center gap-2 group">
+<span class="text-sm font-bold uppercase tracking-[0.2em] text-outline group-hover:text-primary transition-colors">Load More Listings</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-y-1 transition-all">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-6 pb-8 pt-4 bg-[#131313]/60 backdrop-blur-xl z-50 rounded-t-[24px] shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#46f1c5] bg-[#46f1c5]/10 rounded-xl px-4 py-2 scale-110 duration-300" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em]">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">analytics</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em]">Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">pie_chart</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em]">Portfolio</span>
+</a>
+</nav>
+</body></html>

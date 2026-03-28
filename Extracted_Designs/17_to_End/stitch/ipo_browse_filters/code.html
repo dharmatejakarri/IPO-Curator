@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IPO Explorer | The Financial Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#e5e2e1",
+              "error": "#ffb4ab",
+              "surface-dim": "#131313",
+              "secondary": "#9fcaff",
+              "inverse-primary": "#006b55",
+              "on-primary-container": "#005643",
+              "surface-variant": "#353534",
+              "tertiary-container": "#bbbcbc",
+              "on-tertiary-container": "#4a4c4c",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary-container": "#002b4d",
+              "tertiary-fixed": "#e2e2e2",
+              "secondary-container": "#3a95e8",
+              "on-error": "#690005",
+              "on-primary-fixed-variant": "#00513f",
+              "surface-container": "#201f1f",
+              "error-container": "#93000a",
+              "on-secondary-fixed": "#001d36",
+              "tertiary": "#d7d8d8",
+              "inverse-on-surface": "#313030",
+              "surface-tint": "#28dfb5",
+              "on-tertiary-fixed-variant": "#454747",
+              "surface": "#131313",
+              "outline-variant": "#3b4a44",
+              "surface-bright": "#3a3939",
+              "secondary-fixed-dim": "#9fcaff",
+              "on-surface": "#e5e2e1",
+              "surface-container-low": "#1c1b1b",
+              "background": "#131313",
+              "surface-container-high": "#2a2a2a",
+              "secondary-fixed": "#d1e4ff",
+              "on-primary": "#00382b",
+              "outline": "#85948d",
+              "on-secondary-fixed-variant": "#00497d",
+              "on-secondary": "#003258",
+              "on-primary-fixed": "#002118",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "primary-fixed-dim": "#28dfb5",
+              "on-tertiary": "#2f3131",
+              "on-error-container": "#ffdad6",
+              "surface-container-highest": "#353534",
+              "primary-container": "#00d4aa",
+              "on-tertiary-fixed": "#1a1c1c",
+              "on-surface-variant": "#bacac2",
+              "primary-fixed": "#55fcd0",
+              "primary": "#46f1c5",
+              "inverse-surface": "#e5e2e1"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- TopNavBar Component -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl font-['Inter'] antialiased tracking-tight">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-[1440px] mx-auto">
+<div class="text-2xl font-black tracking-tighter text-[#46f1c5] uppercase">
+                The Financial Curator
+            </div>
+<div class="hidden md:flex items-center gap-x-10">
+<a class="text-[#9fcaff] hover:text-[#46f1c5] transition-colors duration-300" href="#">Home</a>
+<a class="text-[#46f1c5] font-bold border-b-2 border-[#46f1c5] pb-1" href="#">IPOs</a>
+<a class="text-[#9fcaff] hover:text-[#46f1c5] transition-colors duration-300" href="#">Watchlist</a>
+<a class="text-[#9fcaff] hover:text-[#46f1c5] transition-colors duration-300" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-x-6">
+<button class="hover:bg-[#353534]/50 p-2 rounded-full transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[#9fcaff]">search</span>
+</button>
+<button class="hover:bg-[#353534]/50 p-2 rounded-full transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[#9fcaff]">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+<img alt="User profile avatar" data-alt="Close-up portrait of a professional male investor in a dark suit against a blurred grey office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtVJ2DE89wDFbn2WGlsRqKlF8yKQSB26bo3bXzzawJ_9E8Ih4nWsaH0QkJDEGjeYzcQUrvKixPCDJXItp_Oq0PxP1m5gitb3LWTRaiigrK5Ttyi_2fFFCuRda7idKLVm4sNjrWpIznES4ptbj0Bc-8DeY3qmqTLxxIl0R7PRVYOwRO7SA2JQvwtz7vzOFpz_7Vc02RXxQLv1vG2U7P5wMO3dzw5PcmQlHQyI4wRVwWrEnX1huhlPTRtLr6o6JVb9WP_vVKbQQBWZUd"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-12 max-w-[1440px] mx-auto">
+<!-- Hero Header -->
+<header class="mb-20">
+<h1 class="text-[5rem] font-black tracking-tighter leading-none mb-4">Market <span class="text-primary">IPOs</span></h1>
+<p class="text-on-surface-variant text-xl max-w-2xl font-light leading-relaxed">
+                Institutional-grade analysis for the modern retail participant. Discover upcoming offerings and curated growth trajectories.
+            </p>
+</header>
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Filter & Sort Sidebar -->
+<aside class="w-full lg:w-72 flex-shrink-0 space-y-12">
+<section>
+<label class="block text-[0.75rem] font-bold tracking-[0.1em] text-on-surface-variant uppercase mb-6">Sort By</label>
+<div class="space-y-3">
+<button class="w-full flex justify-between items-center px-4 py-3 bg-surface-container rounded-xl text-primary font-bold border border-primary/20">
+                            Listing Date <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="w-full flex justify-between items-center px-4 py-3 bg-surface-container-lowest hover:bg-surface-container transition-colors rounded-xl text-on-surface">
+                            Sector <span class="material-symbols-outlined text-sm text-on-surface-variant">unfold_more</span>
+</button>
+<button class="w-full flex justify-between items-center px-4 py-3 bg-surface-container-lowest hover:bg-surface-container transition-colors rounded-xl text-on-surface">
+                            Risk Score <span class="material-symbols-outlined text-sm text-on-surface-variant">unfold_more</span>
+</button>
+</div>
+</section>
+<section>
+<label class="block text-[0.75rem] font-bold tracking-[0.1em] text-on-surface-variant uppercase mb-6">Status</label>
+<div class="space-y-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-none bg-surface-container-highest text-primary focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Upcoming (12)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-none bg-surface-container-highest text-primary focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Currently Open (4)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-none bg-surface-container-highest text-primary focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="text-on-surface group-hover:text-primary transition-colors">Recently Listed</span>
+</label>
+</div>
+</section>
+<!-- Next Steps Nudge Panel -->
+<section class="p-8 bg-primary/5 rounded-lg border border-primary/10 relative overflow-hidden">
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+<label class="block text-[0.7rem] font-black tracking-[0.15em] text-primary uppercase mb-4">Recommended Next Step</label>
+<h4 class="text-lg font-bold mb-3">Complete Risk Profile</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+                        Unlock AI-powered risk scoring tailored to your portfolio volatility limits.
+                    </p>
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-bold text-sm hover:opacity-90 transition-opacity">
+                        Analyze Portfolio
+                    </button>
+</section>
+</aside>
+<!-- Main Listing Area -->
+<div class="flex-grow">
+<!-- Search & Results Meta -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+<div class="relative flex-grow max-w-xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl pl-12 pr-6 py-4 text-on-surface focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant" placeholder="Search companies, sectors, or symbols..." type="text"/>
+</div>
+<div class="text-on-surface-variant text-sm font-medium">
+                        Showing <span class="text-on-surface">18</span> curated opportunities
+                    </div>
+</div>
+<!-- IPO Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Card 1: Featured High Demand -->
+<div class="group bg-surface-container p-8 rounded-lg hover:bg-surface-container-high transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[400px]">
+<div class="absolute top-0 right-0 p-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+</button>
+</div>
+<div>
+<div class="flex items-start justify-between mb-8">
+<div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
+<img alt="Company logo" data-alt="Minimalist geometric logo icon with teal and white shapes on a dark background representing tech innovation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTPKtRCZJSYRQGA3p1N6JLUHVgQaZm-aBhZSJYQLKWFVWdq8iB5kJJk07U6EwNbYY6lMlyYWThDjGeL2CfznYAPHmuzvJ9U1ky7UDkcEZeGEDzSq8uBDyb7V6Ah1XH0Gndgy-dzZns7rcUee19L2v4rKWCvH7Nx2WB0m8HmesRLLCCYUScBZ_SqKhcRCCckQpbMtwq6mr__7kiqebkFKxZYA4tVIjMBHl6DpfUZJWuTDKtoJzsDtWdVFPhtK6fECi9xT9-wYH-6las"/>
+</div>
+<div class="text-right">
+<div class="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-[0.65rem] font-black uppercase tracking-widest rounded-full">
+                                        High Demand
+                                    </div>
+</div>
+</div>
+<h3 class="text-3xl font-bold mb-2 group-hover:text-primary transition-colors">QuantumFlow Systems</h3>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Pioneering cryogenic cooling solutions for next-gen data centers.</p>
+<div class="grid grid-cols-2 gap-y-6 mb-8">
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Issue Price</label>
+<div class="text-xl font-medium text-secondary">$42 - $48</div>
+</div>
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Lot Size</label>
+<div class="text-xl font-medium">350 Shares</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-8 border-t border-white/5">
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Opens On</label>
+<div class="text-sm font-bold">Oct 24, 2024</div>
+</div>
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2">
+                                Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container p-8 rounded-lg hover:bg-surface-container-high transition-all duration-300 flex flex-col justify-between min-h-[400px]">
+<div class="absolute top-0 right-0 p-6">
+<button class="text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<div>
+<div class="flex items-start justify-between mb-8">
+<div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
+<img alt="Company logo" data-alt="Professional abstract corporate logo featuring blue and grey interlocking circles on a clean dark surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsMqJ-qIjRnq6PTrL6_ChN-mEqWGZsq-7kgj09Iq8t2e79Z5GnpWipF5wE2p33CH3nx-0Do0Us5aoQLffLn-Svhu-rDczCID4ZucxVWtHuz8_Q3vvnZ9w1B3BKpNkuS0jLT-iuJtVmB7eIJYXCWZaHZ-_dav5enqA_RnEKDMlTN33R7xyy6YWT5WAIfF1quWDzfOQy7PJZ9x8NoEbNJlI90WCrs-tkb2p3cRP92KC9YtFFtscz26f01quSaUMuPaz2JtMag9Ejw1F3"/>
+</div>
+<div class="text-right">
+<div class="inline-flex items-center px-3 py-1 bg-secondary/10 text-secondary text-[0.65rem] font-black uppercase tracking-widest rounded-full">
+                                        Stable Growth
+                                    </div>
+</div>
+</div>
+<h3 class="text-3xl font-bold mb-2 group-hover:text-primary transition-colors">NeoGrain Bio</h3>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Sustainable agricultural technology enhancing global food security via genetic optimization.</p>
+<div class="grid grid-cols-2 gap-y-6 mb-8">
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Issue Price</label>
+<div class="text-xl font-medium text-secondary">$115 - $122</div>
+</div>
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Lot Size</label>
+<div class="text-xl font-medium">50 Shares</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-8 border-t border-white/5">
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Opens On</label>
+<div class="text-sm font-bold">Oct 28, 2024</div>
+</div>
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2">
+                                Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container p-8 rounded-lg hover:bg-surface-container-high transition-all duration-300 flex flex-col justify-between min-h-[400px]">
+<div class="absolute top-0 right-0 p-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+</button>
+</div>
+<div>
+<div class="flex items-start justify-between mb-8">
+<div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
+<img alt="Company logo" data-alt="Sleek silver and black branding element for a high-end logistics company with sharp modern lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfBSBy2RLUDXdyF6JEX2DJvT1TrS0vpmFvLv7x8qKanuER64NZlWrI62W5MCj9W3nTz8uJ5n-RcJ-u_KbPfR-_Hg_Lx-QxUJua8BxrwBdNPVah4Z8kwZRYSSGYeMkl4TO6dxUJSmTd7sS7yMSWoLOe1W_S6Pak3vw3iapO9u1GR6ykQdjPvQTuGuiOjgVFd_19RinJjjM_J_IlrixrMyPa5fWC_ynisUQGbLs9_ayewWIp7jZ1LcHWeq40pgUHntofUX7VH10TkfDk"/>
+</div>
+<div class="text-right">
+<div class="inline-flex items-center px-3 py-1 bg-error/10 text-error text-[0.65rem] font-black uppercase tracking-widest rounded-full">
+                                        High Risk
+                                    </div>
+</div>
+</div>
+<h3 class="text-3xl font-bold mb-2 group-hover:text-primary transition-colors">OrbitLink Global</h3>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Low-earth orbit satellite constellation for ultra-secure private banking communication.</p>
+<div class="grid grid-cols-2 gap-y-6 mb-8">
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Issue Price</label>
+<div class="text-xl font-medium text-secondary">$18 - $22</div>
+</div>
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Lot Size</label>
+<div class="text-xl font-medium">1000 Shares</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-8 border-t border-white/5">
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Opens On</label>
+<div class="text-sm font-bold">Nov 02, 2024</div>
+</div>
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2">
+                                Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Curated Insight Style -->
+<div class="group bg-surface-container p-8 rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between min-h-[400px]">
+<div class="absolute top-0 right-0 p-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+</button>
+</div>
+<div>
+<div class="flex items-start justify-between mb-8">
+<div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
+<img alt="Company logo" data-alt="Clean minimal logo with green leaf motif and soft shadows for an eco-tech firm on a dark surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzyw-93VZNFgcmgC3fvEzBzn9z6OheYv55gFBKxaCldfjl0A2WhwmQEHCwUqdaG-MfE0mMtKMiBYRJ-uIjC57sdVJyQAj43HnPFspHSANY__G8N2tQSzknq3NR8xkFcyzt34jOHAaUxyahGgdIghZdD4HhXzz0rGyz0tA8NwLTHcVeqySySRZh8YCh3qdukjRwXvmlbfcVNzV7yagYfSv9RANl_us-jcdAZoShdW0p8kTQtQSGrQrLdUWspbAfep4KyIp_Bd5UaTgj"/>
+</div>
+<div class="text-right">
+<div class="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-[0.65rem] font-black uppercase tracking-widest rounded-full">
+                                        Analyst Choice
+                                    </div>
+</div>
+</div>
+<h3 class="text-3xl font-bold mb-2 group-hover:text-primary transition-colors">EnviroCore Inc.</h3>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">AI-driven waste reclamation systems for industrial mega-cities.</p>
+<div class="grid grid-cols-2 gap-y-6 mb-8">
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Issue Price</label>
+<div class="text-xl font-medium text-secondary">$64 - $70</div>
+</div>
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Lot Size</label>
+<div class="text-xl font-medium">200 Shares</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-8 border-t border-white/5">
+<div>
+<label class="block text-[0.65rem] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Opens On</label>
+<div class="text-sm font-bold">Nov 05, 2024</div>
+</div>
+<button class="bg-primary/10 hover:bg-primary text-primary hover:text-on-primary px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2">
+                                Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Load More Asymmetric Spacer -->
+<div class="mt-20 flex justify-center">
+<button class="group flex items-center gap-4 text-on-surface-variant hover:text-primary transition-all">
+<span class="w-12 h-[1px] bg-white/10 group-hover:bg-primary transition-all"></span>
+<span class="font-bold tracking-widest text-[0.75rem] uppercase">Load More Listings</span>
+<span class="w-12 h-[1px] bg-white/10 group-hover:bg-primary transition-all"></span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- SideNavBar Simulation for Layout Completeness -->
+<div class="hidden">
+<div class="h-screen w-72 fixed left-0 top-0 bg-[#0e0e0e] flex flex-col h-full p-8 gap-y-8">
+<div class="text-[#46f1c5] font-bold text-xl tracking-widest uppercase">Curator</div>
+<div class="flex flex-col gap-2">
+<div class="text-[#46f1c5] bg-[#201f1f] rounded-xl font-bold flex items-center gap-4 p-4">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </div>
+<div class="text-[#9fcaff] hover:bg-[#201f1f]/50 flex items-center gap-4 p-4 rounded-xl transition-transform hover:translate-x-1 duration-200">
+<span class="material-symbols-outlined">insert_chart</span> Market IPOs
+                </div>
+<div class="text-[#9fcaff] hover:bg-[#201f1f]/50 flex items-center gap-4 p-4 rounded-xl transition-transform hover:translate-x-1 duration-200">
+<span class="material-symbols-outlined">visibility</span> My Watchlist
+                </div>
+<div class="text-[#9fcaff] hover:bg-[#201f1f]/50 flex items-center gap-4 p-4 rounded-xl transition-transform hover:translate-x-1 duration-200">
+<span class="material-symbols-outlined">menu_book</span> Expert Analysis
+                </div>
+</div>
+<div class="mt-auto space-y-4">
+<button class="w-full h-16 bg-primary rounded-xl text-on-primary font-bold transition-transform active:opacity-90">New Analysis</button>
+</div>
+</div>
+</div>
+</body></html>

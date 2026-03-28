@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#ffdad6",
+              "primary-fixed-dim": "#28dfb5",
+              "on-tertiary-fixed": "#1a1c1c",
+              "on-tertiary": "#2f3131",
+              "surface-container": "#201f1f",
+              "surface": "#131313",
+              "primary-container": "#00d4aa",
+              "secondary-container": "#3a95e8",
+              "tertiary": "#d7d8d8",
+              "surface-variant": "#353534",
+              "on-surface-variant": "#bacac2",
+              "secondary": "#9fcaff",
+              "surface-container-lowest": "#0e0e0e",
+              "primary": "#46f1c5",
+              "on-primary": "#00382b",
+              "on-tertiary-fixed-variant": "#454747",
+              "on-secondary-container": "#002b4d",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "surface-bright": "#3a3939",
+              "surface-dim": "#131313",
+              "inverse-on-surface": "#313030",
+              "surface-container-highest": "#353534",
+              "on-surface": "#e5e2e1",
+              "primary-fixed": "#55fcd0",
+              "on-primary-fixed-variant": "#00513f",
+              "on-primary-container": "#005643",
+              "on-error": "#690005",
+              "surface-container-high": "#2a2a2a",
+              "outline-variant": "#3b4a44",
+              "secondary-fixed-dim": "#9fcaff",
+              "on-primary-fixed": "#002118",
+              "error": "#ffb4ab",
+              "surface-tint": "#28dfb5",
+              "inverse-surface": "#e5e2e1",
+              "on-background": "#e5e2e1",
+              "outline": "#85948d",
+              "on-tertiary-container": "#4a4c4c",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-container-low": "#1c1b1b",
+              "background": "#131313",
+              "on-secondary-fixed": "#001d36",
+              "tertiary-container": "#bbbcbc",
+              "secondary-fixed": "#d1e4ff",
+              "on-secondary-fixed-variant": "#00497d",
+              "inverse-primary": "#006b55",
+              "on-secondary": "#003258",
+              "error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #131313;
+        color: #e5e2e1;
+        font-family: 'Inter', sans-serif;
+      }
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-32">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-8 h-20 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="professional male portrait with minimalist background for user profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg2vnlyqBdeDxmL-i9Atwe-0Q7Z24mBi4S5TS9RP2LIxQ90t7lOJi1naE_kF91l06s6cOkWhXRM_NmSh8HKd9jiTN_iik2vyrVAlHlms6s1HrtXuoiy5245DKR5XvK8Pmjqetwuc14FwOcLVPf3xOsyIfXmGmSwqPL54zBgEG1X-vupyT__tFv13aInTdKGHB3PI_ticQVIGhDup915UD7PpMJbWXpVN_TsHhV-1ddc-u7m4xM1nX-b1Yy3lSnnLX2hH_SnoAv9iXJ"/>
+</div>
+<span class="text-[#46f1c5] font-black tracking-widest text-lg">THE CURATOR</span>
+</div>
+<div class="text-[#353534] hover:opacity-80 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined" style="font-size: 28px;">notifications</span>
+</div>
+</nav>
+<main class="pt-24 px-6 space-y-12 max-w-lg mx-auto">
+<!-- Search Bar Section -->
+<section class="mt-4">
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-16 bg-surface-container-low border-none rounded-xl pl-14 pr-6 text-on-surface placeholder:text-outline/50 focus:ring-1 focus:ring-primary/30 focus:bg-surface-container-high transition-all outline-none" placeholder="Search tickers, companies, insights..." type="text"/>
+</div>
+</section>
+<!-- Featured Analysis Hero Card -->
+<section>
+<div class="relative w-full h-[420px] rounded-lg overflow-hidden group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="abstract high-tech visualization of digital data flow and connectivity in deep emerald and black tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-1uSsvFXywqfNcLr50GxGDu03omUnr6OZGO8nTedzMZrZKIUPfebTKjfYjM3HLaaiwtgegIMaVdGBAcI8Dbl0yAxNvwZ1CAXK0aKYnHmDflaD8EUOe9DqK6niVWYs_opwwHiEp-3nEXsKpBgHfazjmAPpeppgdtj13rRo1eyOaJd00NqaBOGk5EQ3QDPcU0dXU2tjsDOSM2JW9DN7BFpWctso_MVLH9qljV7Yk2vZV7vUMgSlhc3slFsIGlBru6MixiCI-KDmeTFP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#131313] via-[#131313]/40 to-transparent"></div>
+<div class="absolute bottom-0 p-8 space-y-4">
+<div class="inline-block px-3 py-1 bg-primary/20 backdrop-blur-md rounded-full border border-primary/30">
+<span class="text-primary text-[10px] font-bold uppercase tracking-widest">Featured Insight</span>
+</div>
+<h1 class="text-4xl font-extrabold tracking-tighter leading-none text-on-surface">Tech IPOs<br/>Rebound</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed max-w-[80%]">The silent period is ending. Discover why the next 48 hours are critical for enterprise SaaS entries.</p>
+</div>
+</div>
+</section>
+<!-- Curator Insight Nudge -->
+<section>
+<div class="p-8 rounded-lg bg-surface-container-lowest border-l-4 border-primary/60 relative overflow-hidden">
+<div class="absolute -right-8 -top-8 text-primary/5">
+<span class="material-symbols-outlined" style="font-size: 120px;">query_stats</span>
+</div>
+<div class="flex items-start gap-4 relative z-10">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-weight="fill">lightbulb</span>
+</div>
+<div class="space-y-1">
+<span class="text-primary font-bold text-xs uppercase tracking-widest">Curator Insight</span>
+<p class="text-on-surface font-medium text-lg leading-snug">Market sentiment is <span class="text-primary">74% bullish</span> on Tech entries this week.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Opening This Week Horizontal Scroll -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="text-2xl font-bold tracking-tight">Opening This Week</h2>
+<span class="text-primary text-xs font-bold uppercase tracking-widest cursor-pointer hover:underline">View All</span>
+</div>
+<div class="flex overflow-x-auto gap-6 hide-scrollbar pb-4 -mx-6 px-6">
+<!-- IPO Card 1 -->
+<div class="min-w-[240px] bg-surface-container rounded-lg p-6 space-y-6 transition-all active:scale-95">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center overflow-hidden">
+<span class="text-xl font-black text-secondary">A</span>
+</div>
+<div class="px-2 py-1 bg-primary/10 rounded-md border border-primary/20">
+<span class="text-[9px] font-bold text-primary uppercase">High Demand</span>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold tracking-tight">AXON</h3>
+<p class="text-outline text-xs uppercase tracking-widest">Axon Dynamics</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-sm font-medium text-on-surface-variant">$18.00 - $22.00</span>
+<span class="material-symbols-outlined text-primary text-sm">arrow_forward_ios</span>
+</div>
+</div>
+<!-- IPO Card 2 -->
+<div class="min-w-[240px] bg-surface-container rounded-lg p-6 space-y-6 transition-all active:scale-95">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center overflow-hidden">
+<span class="text-xl font-black text-secondary">V</span>
+</div>
+<div class="px-2 py-1 bg-surface-container-highest rounded-md border border-outline-variant/20">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">Steady</span>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold tracking-tight">VELO</h3>
+<p class="text-outline text-xs uppercase tracking-widest">Veloce Systems</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-sm font-medium text-on-surface-variant">$45.00 - $48.50</span>
+<span class="material-symbols-outlined text-primary text-sm">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Closing Tomorrow Section -->
+<section class="space-y-6">
+<h2 class="text-2xl font-bold tracking-tight">Closing Tomorrow</h2>
+<div class="space-y-4">
+<!-- Closing Item 1 -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high transition-colors p-6 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 bg-surface-container rounded-xl flex items-center justify-center">
+<span class="text-2xl font-black text-primary">N</span>
+</div>
+<div>
+<h4 class="font-bold text-lg leading-none">NEXUS</h4>
+<p class="text-on-surface-variant text-xs mt-1">Global Infra</p>
+</div>
+</div>
+<div class="text-right">
+<div class="flex items-center gap-1.5 justify-end text-error">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="text-sm font-bold tracking-tighter uppercase">14h left</span>
+</div>
+<p class="text-[10px] text-outline mt-1 uppercase tracking-widest">Final Call</p>
+</div>
+</div>
+<!-- Closing Item 2 -->
+<div class="group bg-surface-container-low hover:bg-surface-container-high transition-colors p-6 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 bg-surface-container rounded-xl flex items-center justify-center">
+<span class="text-2xl font-black text-secondary">Q</span>
+</div>
+<div>
+<h4 class="font-bold text-lg leading-none">QUARK</h4>
+<p class="text-on-surface-variant text-xs mt-1">Quantum Lab</p>
+</div>
+</div>
+<div class="text-right">
+<div class="flex items-center gap-1.5 justify-end text-error">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="text-sm font-bold tracking-tighter uppercase">22h left</span>
+</div>
+<p class="text-[10px] text-outline mt-1 uppercase tracking-widest">Subscription</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl flex justify-around items-center px-6 pb-8 pt-4 rounded-t-[24px] shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<!-- Dashboard (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors scale-110 duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em] mt-1">Dashboard</span>
+</a>
+<!-- Analysis (Active based on current intent of market overview) -->
+<a class="flex flex-col items-center justify-center text-[#46f1c5] bg-[#46f1c5]/10 rounded-xl px-4 py-2 scale-110 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em] mt-1">Analysis</span>
+</a>
+<!-- Calendar (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors scale-110 duration-300" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em] mt-1">Calendar</span>
+</a>
+<!-- Portfolio (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors scale-110 duration-300" href="#">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em] mt-1">Portfolio</span>
+</a>
+</nav>
+</body></html>

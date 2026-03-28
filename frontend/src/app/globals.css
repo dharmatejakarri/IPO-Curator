@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #131313;
+    --foreground: #ffffff;
+    --primary: #46f1c5;
+    --primary-foreground: #131313;
+    --secondary: #9fcaff;
+    --secondary-foreground: #131313;
+    
+    --surface-lowest: #0e0e0e;
+    --surface-container: #201f1f;
+    --surface-highest: #353534;
+    
+    --muted: #201f1f;
+    --muted-foreground: #8a8a8a;
+    
+    --border: #353534; /* used sparingly, mainly for ghost outlines or inputs */
+    --input: #201f1f;
+    
+    --radius: 1.5rem; /* 24px */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-[#201f1f]/60 backdrop-blur-[20px];
+  }
+  .gradient-primary {
+    @apply bg-gradient-to-br from-[#46f1c5] to-[#00d4aa];
+  }
+  .ghost-border {
+    @apply border border-white/15;
+  }
+  .ambient-shadow {
+    box-shadow: 0px 0px 48px 0px rgba(255, 255, 255, 0.06);
+  }
+}

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Curator | System Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed-dim": "#28dfb5",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-tertiary-container": "#4a4c4c",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-container": "#bbbcbc",
+                        "surface-bright": "#3a3939",
+                        "background": "#000000",
+                        "secondary": "#9fcaff",
+                        "primary": "#46f1c5",
+                        "on-background": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "outline-variant": "#3b4a44",
+                        "on-surface-variant": "#bacac2",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#00497d",
+                        "on-error": "#690005",
+                        "surface-container": "#201f1f",
+                        "primary-fixed": "#55fcd0",
+                        "error": "#ffb4ab",
+                        "on-primary": "#00382b",
+                        "tertiary": "#d7d8d8",
+                        "on-primary-fixed": "#002118",
+                        "inverse-on-surface": "#313030",
+                        "surface": "#131313",
+                        "secondary-container": "#3a95e8",
+                        "on-primary-fixed-variant": "#00513f",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-container": "#002b4d",
+                        "on-primary-container": "#005643",
+                        "on-secondary": "#003258",
+                        "secondary-fixed": "#d1e4ff",
+                        "outline": "#85948d",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary-fixed": "#001d36",
+                        "on-tertiary": "#2f3131",
+                        "surface-tint": "#28dfb5",
+                        "secondary-fixed-dim": "#9fcaff",
+                        "surface-dim": "#131313",
+                        "surface-variant": "#353534",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#00d4aa",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-primary": "#006b55"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #000000; color: #e5e2e1; font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-12 h-24 w-full">
+<div class="text-2xl font-black tracking-tighter text-[#46f1c5] font-['Inter'] tracking-tight">
+            The Curator
+        </div>
+<div class="flex items-center gap-8">
+<div class="hidden md:flex gap-8 text-white/60">
+<a class="hover:text-[#46f1c5] transition-colors duration-300" href="#">Intelligence</a>
+<a class="hover:text-[#46f1c5] transition-colors duration-300" href="#">Portfolio</a>
+<a class="text-[#46f1c5] font-bold" href="#">Settings</a>
+</div>
+<div class="flex items-center gap-4 text-[#46f1c5]">
+<span class="material-symbols-outlined cursor-pointer hover:scale-95 duration-200">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-95 duration-200">account_circle</span>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex h-screen w-72 fixed left-0 top-0 pt-32 bg-[#0e0e0e] flex flex-col gap-2 z-40">
+<div class="px-8 mb-8">
+<h2 class="text-[#46f1c5] font-bold text-sm uppercase tracking-[0.1em]">Settings</h2>
+<p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">System Configuration</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="text-white/40 hover:text-white/80 px-8 py-4 transition-all hover:bg-[#201f1f]/50 flex items-center gap-4 font-['Inter'] text-sm uppercase tracking-[0.1em]" href="#account">
+<span class="material-symbols-outlined">manage_accounts</span> Account
+            </a>
+<a class="text-[#46f1c5] bg-[#201f1f] rounded-none border-r-4 border-[#46f1c5] px-8 py-4 flex items-center gap-4 font-['Inter'] text-sm uppercase tracking-[0.1em]" href="#persona">
+<span class="material-symbols-outlined">psychology</span> AI Persona
+            </a>
+<a class="text-white/40 hover:text-white/80 px-8 py-4 transition-all hover:bg-[#201f1f]/50 flex items-center gap-4 font-['Inter'] text-sm uppercase tracking-[0.1em]" href="#api">
+<span class="material-symbols-outlined">api</span> API Access
+            </a>
+<a class="text-white/40 hover:text-white/80 px-8 py-4 transition-all hover:bg-[#201f1f]/50 flex items-center gap-4 font-['Inter'] text-sm uppercase tracking-[0.1em]" href="#notifications">
+<span class="material-symbols-outlined">notifications_active</span> Notifications
+            </a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 pt-32 pb-32 px-6 md:px-20 min-h-screen">
+<div class="max-w-6xl mx-auto space-y-24">
+<!-- Account Section -->
+<section class="space-y-12" id="account">
+<div class="space-y-2">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-secondary">Identity &amp; Security</span>
+<h1 class="text-4xl md:text-6xl font-black tracking-tighter text-on-surface">Account Management</h1>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Profile Card -->
+<div class="md:col-span-2 bg-surface-container rounded-lg p-12 flex flex-col md:flex-row items-center gap-8">
+<div class="w-32 h-32 rounded-full overflow-hidden bg-surface-container-highest flex-shrink-0">
+<img alt="User Portrait" class="w-full h-full object-cover" data-alt="Close-up studio portrait of a sophisticated professional man with sharp features and neutral expression against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwn4VY5EsiIgkVq4bTNYwtQESuwmawfdsq8oCKrpbOkkcsPh78KLW5g0WBwddsST1dAIzWzVFamerDCM0UsOUETHcN4BazzDWgurYV96RvmRZl72gIRtJJBythpsMLNYWq7rhOnQi0hqea9-Tz_ghMr-lh21LcRgP3F8TEdAArCHvildZKO8lsT4cncuZ-56JcTo6bSslsAtiWUYQutnX49Z3cMHogBvPyM-ImLjMqwOwoIJhp4in4ELihWbQHmugFEU0eoIy0rgXy"/>
+</div>
+<div class="space-y-4 text-center md:text-left">
+<div>
+<h3 class="text-2xl font-bold">Julian Vane</h3>
+<p class="text-on-surface-variant">Chief Investment Officer @ Vane Capital</p>
+</div>
+<div class="flex gap-4 justify-center md:justify-start">
+<span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-primary/20">Institutional Tier</span>
+<span class="bg-surface-container-highest text-white/60 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Active</span>
+</div>
+</div>
+</div>
+<!-- Security Quick Actions -->
+<div class="bg-surface-container rounded-lg p-12 flex flex-col justify-between">
+<div class="space-y-2">
+<h4 class="font-bold text-lg uppercase tracking-tight">Security</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Multi-factor authentication is active via hardware key.</p>
+</div>
+<button class="mt-8 text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:opacity-70 transition-opacity">
+                            Update Security <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- AI Persona Section (The Bento Grid) -->
+<section class="space-y-12" id="persona">
+<div class="space-y-2">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-primary">Neural Configuration</span>
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter text-on-surface">AI Persona Parameters</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Risk Appetite Slider -->
+<div class="md:col-span-7 bg-surface-container rounded-lg p-12 space-y-10">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="text-2xl font-bold">Risk Appetite</h3>
+<p class="text-on-surface-variant text-sm max-w-sm">Defines the aggressiveness of deal evaluation and sensitivity to market volatility.</p>
+</div>
+<span class="text-primary font-black text-4xl italic">84</span>
+</div>
+<div class="relative py-4">
+<div class="h-[2px] w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[84%]"></div>
+</div>
+<div class="absolute top-1/2 left-[84%] -translate-y-1/2 w-6 h-6 bg-primary rounded-full shadow-[0_0_20px_rgba(70,241,197,0.4)] border-4 border-black"></div>
+</div>
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-white/30">
+<span>Conservative</span>
+<span>Speculative</span>
+</div>
+</div>
+<!-- Sentiment Bias Toggle -->
+<div class="md:col-span-5 bg-surface-container-low border border-outline-variant/10 rounded-lg p-12 space-y-8">
+<div class="space-y-1">
+<h3 class="text-2xl font-bold">Sentiment Bias</h3>
+<p class="text-on-surface-variant text-sm">Force the model to seek out contrarian signals.</p>
+</div>
+<div class="flex items-center gap-4 bg-black p-2 rounded-full border border-white/5">
+<button class="flex-1 py-3 text-[10px] font-bold uppercase tracking-widest text-white/30 hover:text-white transition-colors">Neutral</button>
+<button class="flex-1 py-3 text-[10px] font-bold uppercase tracking-widest bg-primary text-on-primary rounded-full shadow-lg">Contrarian</button>
+</div>
+</div>
+<!-- Analysis Depth Card -->
+<div class="md:col-span-5 bg-surface-container rounded-lg p-12 flex flex-col justify-between">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h3 class="text-2xl font-bold leading-tight">Analysis Depth</h3>
+<p class="text-on-surface-variant text-sm">Current setting: <span class="text-white">Deep Forensic (L4)</span>. AI will scan up to 10 years of historical founder exits.</p>
+</div>
+<div class="mt-12 flex gap-1 h-2">
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-white/10 rounded-full"></div>
+</div>
+</div>
+<!-- Visual Data Presentation -->
+<div class="md:col-span-7 bg-surface-container-low rounded-lg p-12 overflow-hidden relative group">
+<div class="relative z-10 space-y-4">
+<h3 class="text-2xl font-bold">Persona Visualizer</h3>
+<p class="text-on-surface-variant text-sm max-w-xs">Your AI is currently tuned to high-growth, high-risk emerging tech sectors with a focus on SaaS.</p>
+</div>
+<!-- Abstract Data Visualization -->
+<div class="absolute right-0 bottom-0 w-2/3 h-full opacity-40 group-hover:opacity-60 transition-opacity">
+<svg class="w-full h-full" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,77.3,-44.7C85.4,-31.3,90.5,-15.7,89.2,-0.7C88,14.2,80.4,28.4,71.3,40.8C62.2,53.2,51.6,63.8,38.9,71.5C26.2,79.2,13.1,84,-0.8,85.4C-14.7,86.8,-29.4,84.8,-42.6,77.6C-55.8,70.4,-67.5,58,-75.4,44.1C-83.3,30.2,-87.4,14.8,-86.6,0.5C-85.8,-13.9,-80,-27.7,-71.4,-39.9C-62.8,-52.1,-51.4,-62.7,-38.3,-70.2C-25.2,-77.7,-12.6,-82.1,1.5,-84.7C15.6,-87.3,31.2,-83.6,44.7,-76.4Z" fill="#46f1c5" transform="translate(100 100)"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- API & Notifications Row -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-20">
+<!-- API Integration -->
+<div class="space-y-12" id="api">
+<div class="space-y-2">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-secondary">Connectivity</span>
+<h2 class="text-3xl font-black tracking-tight text-on-surface">API &amp; Integrations</h2>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-6 bg-surface-container rounded-lg border-l-4 border-secondary">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-black flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-secondary">database</span>
+</div>
+<div>
+<p class="font-bold text-sm">Bloomberg Terminal</p>
+<p class="text-xs text-on-surface-variant">Connected • Last sync: 2m ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-white">settings</span>
+</div>
+<div class="flex items-center justify-between p-6 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-black/40 flex items-center justify-center rounded border border-white/5">
+<span class="material-symbols-outlined text-white/30">add</span>
+</div>
+<p class="font-bold text-sm text-white/40 group-hover:text-white transition-colors">Add New Data Source</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Notifications -->
+<div class="space-y-12" id="notifications">
+<div class="space-y-2">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-primary">Alert Flow</span>
+<h2 class="text-3xl font-black tracking-tight text-on-surface">Real-Time Alerts</h2>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between py-4 border-b border-white/5">
+<div class="space-y-1">
+<h4 class="text-sm font-bold">S-1 Filings</h4>
+<p class="text-xs text-on-surface-variant">Instant push for all new SEC registrations.</p>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between py-4 border-b border-white/5">
+<div class="space-y-1">
+<h4 class="text-sm font-bold">Portfolio Volatility</h4>
+<p class="text-xs text-on-surface-variant">Alert when holdings move &gt;5% in pre-market.</p>
+</div>
+<div class="w-12 h-6 bg-surface-container-highest rounded-full relative cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white/20 rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between py-4">
+<div class="space-y-1">
+<h4 class="text-sm font-bold">AI Weekly Recap</h4>
+<p class="text-xs text-on-surface-variant">Summary of sector trends and deep dives.</p>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-8 pb-4 h-20 bg-[#131313]/80 backdrop-blur-2xl z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-white/30 hover:text-white transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Inter'] mt-1">Intelligence</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white/30 hover:text-white transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Inter'] mt-1">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#46f1c5] bg-[#201f1f] rounded-full px-6 py-2 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-widest font-['Inter'] mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

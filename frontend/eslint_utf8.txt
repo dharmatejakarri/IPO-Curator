@@ -1,0 +1,9 @@
+﻿
+C:\Users\ASUS\Downloads\IPO Analysis Project\frontend\src\app\layout.tsx
+  20:9  warning  Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+C:\Users\ASUS\Downloads\IPO Analysis Project\frontend\tailwind.config.ts
+  44:13  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+Γ£û 2 problems (1 error, 1 warning)
+

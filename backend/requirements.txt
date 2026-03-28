@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+langchain
+langgraph
+chromadb
+sentence-transformers
+supabase
+pydantic
+python-dotenv
+requests
+beautifulsoup4
+yfinance
+pandas

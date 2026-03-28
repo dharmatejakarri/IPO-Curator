@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#454747",
+              "on-primary-fixed-variant": "#00513f",
+              "on-tertiary-container": "#4a4c4c",
+              "surface-dim": "#131313",
+              "error": "#ffb4ab",
+              "tertiary-fixed": "#e2e2e2",
+              "outline": "#85948d",
+              "on-primary-fixed": "#002118",
+              "on-tertiary-fixed": "#1a1c1c",
+              "on-surface": "#e5e2e1",
+              "primary-container": "#00d4aa",
+              "secondary-fixed": "#d1e4ff",
+              "surface-container-lowest": "#0e0e0e",
+              "on-secondary": "#003258",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "surface-container-high": "#2a2a2a",
+              "on-surface-variant": "#bacac2",
+              "on-error-container": "#ffdad6",
+              "primary-fixed": "#55fcd0",
+              "on-background": "#e5e2e1",
+              "tertiary": "#d7d8d8",
+              "surface-bright": "#3a3939",
+              "outline-variant": "#3b4a44",
+              "secondary-fixed-dim": "#9fcaff",
+              "secondary-container": "#3a95e8",
+              "on-primary-container": "#005643",
+              "surface-container": "#201f1f",
+              "on-primary": "#00382b",
+              "inverse-on-surface": "#313030",
+              "surface-variant": "#353534",
+              "surface": "#131313",
+              "surface-tint": "#28dfb5",
+              "on-secondary-fixed": "#001d36",
+              "secondary": "#9fcaff",
+              "error-container": "#93000a",
+              "inverse-surface": "#e5e2e1",
+              "surface-container-low": "#1c1b1b",
+              "on-secondary-container": "#002b4d",
+              "surface-container-highest": "#353534",
+              "primary-fixed-dim": "#28dfb5",
+              "primary": "#46f1c5",
+              "on-secondary-fixed-variant": "#00497d",
+              "on-tertiary": "#2f3131",
+              "inverse-primary": "#006b55",
+              "tertiary-container": "#bbbcbc",
+              "on-error": "#690005",
+              "background": "#131313"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full max-w-none">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#46f1c5]" data-icon="insights">insights</span>
+<h1 class="font-['Inter'] tracking-[-0.04em] font-black tracking-tighter text-xl uppercase text-[#46f1c5]">CURATOR</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#353534] p-2 rounded-full transition-colors" data-icon="history">history</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20">
+<img alt="User profile" data-alt="professional portrait of a person with neutral lighting and dark studio background to match financial app aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNVS3j86foCzV_xneDvDLzQn7YqmCIWVKd3GFSYc46ZI5XgRNMJmhJx-12L9-44mlIiF7JyWB6OKOJIVaKo9AI_g6in3lkt16C8O5nZECGvdp4PdVi5fZPmXs0ETBxKsQ_Qn2YRfTuSqsdGF8z0d9lgCrn0y2fy_BILeeUM33WajqDvILWPHZpNJeDbqhZtGB_RSRYLj6p9LFAmcz1TJBwgDYvR0wpRqkG6wdTIDWP2sb8C8pZxFOO2B1BomwLJT1tjyUvfNBZFFKd"/>
+</div>
+</div>
+</header>
+<!-- Main Chat Canvas -->
+<main class="min-h-screen pt-24 pb-40 px-4 max-w-2xl mx-auto flex flex-col gap-8">
+<!-- AI Response with Integrated Insights -->
+<section class="flex flex-col gap-4 items-start animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="bg-surface-container p-6 rounded-lg rounded-tl-none flex flex-col gap-6 max-w-[95%]">
+<div class="flex flex-col gap-2">
+<span class="font-label text-[10px] font-medium tracking-[0.1em] uppercase text-primary">Analysis Update</span>
+<p class="text-body-lg leading-relaxed text-on-surface">
+                        Based on the latest S-1 filing for <span class="text-secondary font-bold">ARM Holdings</span>, the valuation metrics suggest a significant premium compared to industry benchmarks. Here is the primary growth trajectory:
+                    </p>
+</div>
+<!-- Embedded Mini-Chart & Metrics -->
+<div class="bg-surface-container-lowest rounded-lg p-5 flex flex-col gap-4 border border-outline-variant/10">
+<div class="flex justify-between items-end">
+<div>
+<span class="font-label text-[10px] text-on-surface-variant block uppercase tracking-widest">Revenue Growth (Est)</span>
+<span class="text-2xl font-black text-primary tracking-tight">+24.8%</span>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-[10px] font-bold">OUTPERFORM</span>
+</div>
+</div>
+<!-- SVG Mini Chart -->
+<div class="h-16 w-full mt-2">
+<svg class="w-full h-full" viewbox="0 0 200 60">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#46f1c5" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#46f1c5" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 50 Q 25 45, 50 35 T 100 30 T 150 15 T 200 5 L 200 60 L 0 60 Z" fill="url(#chartGradient)"></path>
+<path d="M0 50 Q 25 45, 50 35 T 100 30 T 150 15 T 200 5" fill="none" stroke="#46f1c5" stroke-width="2.5"></path>
+<circle cx="200" cy="5" fill="#46f1c5" r="3"></circle>
+</svg>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="bg-surface-container-high/30 p-3 rounded-md">
+<span class="text-[9px] uppercase tracking-wider text-on-surface-variant block mb-1">Offer Price</span>
+<span class="text-md font-bold text-on-surface">$47 - $51</span>
+</div>
+<div class="bg-surface-container-high/30 p-3 rounded-md">
+<span class="text-[9px] uppercase tracking-wider text-on-surface-variant block mb-1">Market Cap</span>
+<span class="text-md font-bold text-on-surface">$52.3B</span>
+</div>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant italic">
+                    Would you like me to cross-reference these margins with the 2023 Nvidia GPU segment performance?
+                </p>
+</div>
+<span class="text-[10px] text-outline-variant ml-2">10:42 AM</span>
+</section>
+<!-- User Message -->
+<section class="flex flex-col gap-2 items-end self-end animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+<div class="bg-secondary-container text-on-secondary-container p-4 px-6 rounded-lg rounded-tr-none max-w-[85%]">
+<p class="text-sm font-medium">Yes, please. Also extract any mentions of 'RISK FACTORS' related to sovereign manufacturing dependencies.</p>
+</div>
+<span class="text-[10px] text-outline-variant mr-2">10:43 AM</span>
+</section>
+<!-- AI Generating State (Subtle) -->
+<section class="flex items-center gap-3 text-primary animate-pulse py-4">
+<span class="material-symbols-outlined text-sm" data-icon="data_exploration">data_exploration</span>
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold">Analyzing S-1 Sections...</span>
+</section>
+</main>
+<!-- History / Recent Analysis Swipe Menu (Peek) -->
+<div class="fixed bottom-32 left-0 w-full px-6 z-40">
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<div class="bg-surface-container/80 backdrop-blur-md border border-outline-variant/10 px-4 py-3 rounded-full flex items-center gap-3 shrink-0">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="description">description</span>
+<span class="text-[11px] font-semibold text-on-surface whitespace-nowrap">Reddit IPO S-1</span>
+</div>
+<div class="bg-surface-container/80 backdrop-blur-md border border-outline-variant/10 px-4 py-3 rounded-full flex items-center gap-3 shrink-0">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="query_stats">query_stats</span>
+<span class="text-[11px] font-semibold text-on-surface whitespace-nowrap">Instacart Multiples</span>
+</div>
+<div class="bg-surface-container/80 backdrop-blur-md border border-outline-variant/10 px-4 py-3 rounded-full flex items-center gap-3 shrink-0">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="pie_chart">pie_chart</span>
+<span class="text-[11px] font-semibold text-on-surface whitespace-nowrap">Klaviyo YoY</span>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Input Area -->
+<div class="fixed bottom-0 w-full z-50 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest to-transparent pb-10 pt-6 px-6">
+<div class="max-w-2xl mx-auto flex items-center gap-3 bg-surface-container-high rounded-full p-2 border border-outline-variant/10 shadow-2xl">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="attachment">attachment</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface text-sm font-medium placeholder:text-outline-variant" placeholder="Ask about S-1 financials..." type="text"/>
+<button class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Shared Component - Contextually Suppressed but kept for Blueprint alignment as a hidden ref if needed, showing how to handle 'Analysis' active) -->
+<!-- The BottomNavBar is suppressed on task-focused chat screens as per UX instructions to prioritize the content canvas and input area. -->
+</body></html>

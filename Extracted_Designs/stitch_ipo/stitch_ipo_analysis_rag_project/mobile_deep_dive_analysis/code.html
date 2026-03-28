@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Databricks IPO Analysis | THE CURATOR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#ffdad6",
+              "primary-fixed-dim": "#28dfb5",
+              "on-tertiary-fixed": "#1a1c1c",
+              "on-tertiary": "#2f3131",
+              "surface-container": "#201f1f",
+              "surface": "#131313",
+              "primary-container": "#00d4aa",
+              "secondary-container": "#3a95e8",
+              "tertiary": "#d7d8d8",
+              "surface-variant": "#353534",
+              "on-surface-variant": "#bacac2",
+              "secondary": "#9fcaff",
+              "surface-container-lowest": "#0e0e0e",
+              "primary": "#46f1c5",
+              "on-primary": "#00382b",
+              "on-tertiary-fixed-variant": "#454747",
+              "on-secondary-container": "#002b4d",
+              "tertiary-fixed-dim": "#c6c6c7",
+              "surface-bright": "#3a3939",
+              "surface-dim": "#131313",
+              "inverse-on-surface": "#313030",
+              "surface-container-highest": "#353534",
+              "on-surface": "#e5e2e1",
+              "primary-fixed": "#55fcd0",
+              "on-primary-fixed-variant": "#00513f",
+              "on-primary-container": "#005643",
+              "on-error": "#690005",
+              "surface-container-high": "#2a2a2a",
+              "outline-variant": "#3b4a44",
+              "secondary-fixed-dim": "#9fcaff",
+              "on-primary-fixed": "#002118",
+              "error": "#ffb4ab",
+              "surface-tint": "#28dfb5",
+              "inverse-surface": "#e5e2e1",
+              "on-background": "#e5e2e1",
+              "outline": "#85948d",
+              "on-tertiary-container": "#4a4c4c",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-container-low": "#1c1b1b",
+              "background": "#131313",
+              "on-secondary-fixed": "#001d36",
+              "tertiary-container": "#bbbcbc",
+              "secondary-fixed": "#d1e4ff",
+              "on-secondary-fixed-variant": "#00497d",
+              "inverse-primary": "#006b55",
+              "on-secondary": "#003258",
+              "error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #131313; color: #e5e2e1; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .glass-panel { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/60 backdrop-blur-xl flex justify-between items-center px-8 h-20 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User Profile" data-alt="professional portrait of a financial analyst in a dark studio setting with teal rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2h1mawqAMXg5h7Oo3T1ZAxYnf3ldsqo_fb9Ejibh4AkaTwuPC_Tpa9VQTiXLNyxzzea1nncz4LiTeev8VFsfm1K063NNgzFtHQvoHPKLUuK8OiWmulrA6ZAfSH8PQA8WG8yzeEyp53Z1YcoOGV_qMfjBwdwpLBFBcn5RQJ6gV1z97E-fHjGzMuucap9GIHcSlsGGPYoYEjG58AelDPVoHXaGhCoSNlAVw57Di0asIneQR94ENVVelU_IPAsUGwL6afE3NXDxXCoS0"/>
+</div>
+<span class="text-[#46f1c5] font-black tracking-widest text-lg">THE CURATOR</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#353534] hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 px-6 space-y-10 max-w-lg mx-auto">
+<!-- Hero Section -->
+<section class="relative overflow-hidden rounded-lg bg-surface-container p-8 space-y-6">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-primary/10 text-primary px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Strong Buy</span>
+</div>
+<div class="space-y-1">
+<h1 class="text-6xl font-black tracking-tighter text-on-surface">DBRX</h1>
+<p class="text-secondary font-medium tracking-wide">Databricks Inc.</p>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-4xl font-bold text-on-surface">$114.50</span>
+<span class="text-primary text-sm mb-1 flex items-center">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+                    +12.4% Est.
+                </span>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container h-16 rounded-xl text-on-primary font-bold text-lg flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(70,241,197,0.2)] active:scale-95 transition-all">
+                Analyze Filing
+                <span class="material-symbols-outlined" data-icon="description">description</span>
+</button>
+</section>
+<!-- Summary Metrics Bento Grid -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-6 rounded-lg space-y-4 col-span-2">
+<p class="text-[10px] text-outline font-bold uppercase tracking-[0.2em]">Risk Score</p>
+<div class="relative h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary" style="width: 24%;"></div>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="text-4xl font-black text-primary">24<span class="text-lg text-outline font-normal">/100</span></span>
+<span class="text-primary text-xs font-bold uppercase">Low Volatility</span>
+</div>
+</div>
+<div class="bg-surface-container p-5 rounded-lg space-y-2">
+<p class="text-[10px] text-outline font-bold uppercase tracking-[0.1em]">Revenue Growth</p>
+<p class="text-2xl font-bold text-on-surface">+70%</p>
+<p class="text-[10px] text-primary">YoY Outperformance</p>
+</div>
+<div class="bg-surface-container p-5 rounded-lg space-y-2">
+<p class="text-[10px] text-outline font-bold uppercase tracking-[0.1em]">Gross Margin</p>
+<p class="text-2xl font-bold text-on-surface">82%</p>
+<p class="text-[10px] text-secondary">SaaS Benchmark High</p>
+</div>
+<div class="bg-surface-container p-5 rounded-lg space-y-2 col-span-2">
+<p class="text-[10px] text-outline font-bold uppercase tracking-[0.1em]">Net Retention</p>
+<div class="flex justify-between items-center">
+<p class="text-3xl font-bold text-on-surface">125%</p>
+<div class="flex gap-1">
+<div class="w-1 h-6 bg-primary rounded-full"></div>
+<div class="w-1 h-8 bg-primary rounded-full"></div>
+<div class="w-1 h-10 bg-primary rounded-full"></div>
+<div class="w-1 h-12 bg-primary rounded-full"></div>
+<div class="w-1 h-9 bg-primary/30 rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- GMP Trend Chart -->
+<section class="bg-surface-container rounded-lg p-6 space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="text-lg font-bold text-on-surface">GMP Trend</h3>
+<div class="flex gap-2">
+<span class="w-2 h-2 rounded-full bg-primary mt-1.5"></span>
+<span class="text-[10px] text-outline uppercase font-bold tracking-widest">Grey Market Premium</span>
+</div>
+</div>
+<div class="h-48 w-full relative group">
+<!-- SVG Chart Mockup -->
+<svg class="w-full h-full" viewbox="0 0 400 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#46f1c5" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#46f1c5" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 180 Q 50 160 100 140 T 200 100 T 300 110 T 400 40 L 400 200 L 0 200 Z" fill="url(#chartGradient)"></path>
+<path d="M0 180 Q 50 160 100 140 T 200 100 T 300 110 T 400 40" fill="none" stroke="#46f1c5" stroke-linecap="round" stroke-width="3"></path>
+<!-- Grid Lines -->
+<line stroke="#3b4a44" stroke-opacity="0.2" x1="0" x2="400" y1="50" y2="50"></line>
+<line stroke="#3b4a44" stroke-opacity="0.2" x1="0" x2="400" y1="100" y2="100"></line>
+<line stroke="#3b4a44" stroke-opacity="0.2" x1="0" x2="400" y1="150" y2="150"></line>
+</svg>
+<!-- Tooltip Mockup -->
+<div class="absolute top-4 right-8 bg-surface-container-highest border border-outline-variant/20 p-2 rounded-md shadow-xl backdrop-blur-md">
+<p class="text-[8px] text-outline font-bold uppercase">Current Premium</p>
+<p class="text-sm font-bold text-primary">+34.2%</p>
+</div>
+</div>
+<div class="flex justify-between text-[10px] text-outline font-bold px-2">
+<span>PRE-FILING</span>
+<span>S1-ANNOUNCED</span>
+<span>NOW</span>
+</div>
+</section>
+<!-- AI Suggestions Panel -->
+<section class="space-y-4">
+<div class="flex items-center gap-2 px-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface">Curator Insights</h3>
+</div>
+<div class="bg-surface-container-low rounded-lg p-6 space-y-6">
+<div class="space-y-3">
+<p class="text-[10px] text-secondary font-bold uppercase tracking-[0.15em]">For Context</p>
+<div class="flex gap-4">
+<div class="w-1 bg-secondary rounded-full"></div>
+<p class="text-sm leading-relaxed text-on-surface-variant">
+                            Databricks is trading at a implied 18x EV/Rev, a slight premium to Snowflake's current 15.5x, justified by higher growth.
+                        </p>
+</div>
+</div>
+<div class="h-px bg-outline-variant/10"></div>
+<div class="space-y-3">
+<p class="text-[10px] text-primary font-bold uppercase tracking-[0.15em]">Nudge</p>
+<div class="flex gap-4">
+<div class="w-1 bg-primary rounded-full"></div>
+<p class="text-sm leading-relaxed text-on-surface-variant">
+                            Watch the lock-up expiry closely; early employee equity represents 12% of the float. Set alert for day 180.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-6 pb-8 pt-4 bg-[#131313]/60 backdrop-blur-xl z-50 rounded-t-[24px] shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em] mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#46f1c5] bg-[#46f1c5]/10 rounded-xl px-4 py-2 scale-110 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em] mt-1">Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em] mt-1">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#353534] hover:text-[#46f1c5] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="pie_chart">pie_chart</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-[0.1em] mt-1">Portfolio</span>
+</a>
+</nav>
+</body></html>
